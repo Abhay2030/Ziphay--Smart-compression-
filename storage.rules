@@ -1,0 +1,46 @@
+rules_version = '2';
+
+// ══════════════════════════════════════════════
+//  Ziphay — Firebase Storage Security Rules (Hardened)
+//  Users can only access files in their own folder.
+//  Content type validation blocks executables (H11).
+//  Max file size: 50 MB (free), 2 GB (pro — future).
+// ══════════════════════════════════════════════
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ── User uploads: /uploads/{userId}/{fileName} ──
+    match /uploads/{userId}/{allPaths=**} {
+      // Allow read only if authenticated and owner
+      allow read: if request.auth != null && request.auth.uid == userId;
+
+      // Allow write only if:
+      // 1) Authenticated and owner
+      // 2) File < 50 MB
+      // 3) Content type is an allowed media type (H11 fix)
+      // 4) NOT an executable or dangerous content type
+      allow write: if request.auth != null
+                   && request.auth.uid == userId
+                   && request.resource.size < 50 * 1024 * 1024
+                   // Whitelist allowed content types
+                   && (request.resource.contentType.matches('image/.*')
+                       || request.resource.contentType.matches('video/.*')
+                       || request.resource.contentType == 'application/pdf'
+                       || request.resource.contentType == 'application/zip'
+                       || request.resource.contentType == 'application/gzip')
+                   // Block dangerous content types explicitly
+                   && !request.resource.contentType.matches('application/x-executable')
+                   && !request.resource.contentType.matches('application/x-msdownload')
+                   && !request.resource.contentType.matches('application/x-msdos-program')
+                   && !request.resource.contentType.matches('application/x-sh')
+                   && !request.resource.contentType.matches('application/x-shellscript')
+                   && !request.resource.contentType.matches('text/x-script.*');
+    }
+
+    // ── Deny everything else ──
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Changelog — Ziphay</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00d4aa">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pages.css">
+  <style>
+    .timeline { position:relative; padding-left:32px; }
+    .timeline::before { content:''; position:absolute; left:8px; top:8px; bottom:0; width:2px; background:linear-gradient(to bottom,var(--teal),rgba(139,92,246,.4),transparent); }
+    .tl-item { position:relative; margin-bottom:36px; }
+    .tl-dot { position:absolute; left:-28px; top:6px; width:14px; height:14px; border-radius:50%; border:2px solid var(--teal); background:var(--bg); box-shadow:0 0 8px rgba(0,212,170,.4); }
+    .tl-version { font-family:'Syne',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); margin-bottom:4px; }
+    .tl-date { color:var(--muted); font-size:.74rem; margin-bottom:8px; }
+    .tl-title { font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; margin-bottom:8px; }
+    .tl-changes { list-style:none; display:flex; flex-direction:column; gap:5px; }
+    .tl-changes li { display:flex; align-items:flex-start; gap:9px; font-size:.84rem; color:var(--muted); }
+    .tl-changes li::before { content:attr(data-type); flex-shrink:0; padding:1px 7px; border-radius:4px; font-size:.62rem; font-weight:700; letter-spacing:.05em; margin-top:2px; }
+    .tl-changes li[data-type="new"]::before  { background:rgba(0,212,170,.12); color:var(--teal); content:'NEW'; }
+    .tl-changes li[data-type="fix"]::before  { background:rgba(16,185,129,.1); color:#34d399; content:'FIX'; }
+    .tl-changes li[data-type="imp"]::before  { background:rgba(139,92,246,.1); color:var(--purple); content:'IMP'; }
+    .tl-changes li[data-type="rem"]::before  { background:rgba(239,68,68,.1); color:#f87171; content:'DEP'; }
+  </style>
+</head>
+<body>
+  <nav class="pg-nav"><div class="pg-nav-inner">
+    <a href="index.html" class="pg-logo"><div class="pg-logo-icon"><svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L9 22L19.5 10H13Z"/></svg></div>Ziphay<span>.</span></a>
+    <div class="pg-nav-right"><a href="index.html" class="pg-back-btn">← Back</a><a href="status.html">Status</a><button class="pg-theme-btn" id="themeBtn">🌙</button></div>
+  </div></nav>
+
+  <div class="pg-wrap">
+    <div class="pg-header">
+      <div class="pg-tag">Changelog</div>
+      <h1 class="pg-title">What's New in<br><em>Ziphay</em></h1>
+      <p class="pg-subtitle">Every update, fix, and improvement — tracked publicly. Built by Abhay Donde.</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-version">v2.0.0</div>
+        <div class="tl-date">March 2026 — Current Release</div>
+        <div class="tl-title">🚀 Full Rebuild — Compress & Upscale</div>
+        <ul class="tl-changes">
+          <li data-type="new">Added Image Upscaler with 2×, 4×, 8× scaling</li>
+          <li data-type="new">Three enhance modes: Sharp, Crisp, Natural</li>
+          <li data-type="new">Multi-pass upscaling algorithm for 4× and 8× quality</li>
+          <li data-type="new">Mode Tabs — switch between Compress and Upscale</li>
+          <li data-type="new">Real Before/After comparison slider with actual images</li>
+          <li data-type="new">Dark / Light mode toggle via data-theme CSS variables</li>
+          <li data-type="new">Goal-based compression: Web, Email, Social, Archive</li>
+          <li data-type="new">Output format selector: Auto, WebP, JPEG, PNG</li>
+          <li data-type="new">Estimated size preview before compression</li>
+          <li data-type="new">Batch file upload with removable chips</li>
+          <li data-type="new">Per-file download rows for batch results</li>
+          <li data-type="new">Remaining time estimate during processing</li>
+          <li data-type="fix">Fixed file upload not working (pointer-event conflict with CSS overlay)</li>
+          <li data-type="fix">Fixed before/after slider showing fake placeholder instead of real images</li>
+          <li data-type="imp">Completely rebuilt CSS using data-theme attribute for proper dark/light switching</li>
+          <li data-type="imp">Separated HTML, CSS, JS into clean modular files</li>
+          <li data-type="imp">Animated progress bar with goal-specific step messages</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--purple);box-shadow:0 0 8px rgba(139,92,246,.4)"></div>
+        <div class="tl-version" style="color:var(--purple)">v1.2.0</div>
+        <div class="tl-date">February 2026</div>
+        <div class="tl-title">⚡ Goal Selector & Real Compression</div>
+        <ul class="tl-changes">
+          <li data-type="new">Goal Selector with live info strip (Web / Email / Social / Archive)</li>
+          <li data-type="new">Real image compression using Canvas API → WebP output</li>
+          <li data-type="new">Real file compression using fflate GZIP engine</li>
+          <li data-type="new">Goal-specific compression quality profiles</li>
+          <li data-type="new">Goal-specific progress step messages</li>
+          <li data-type="new">Per-goal hint text in drop zone</li>
+          <li data-type="imp">Replaced time.sleep() simulation with actual compression logic</li>
+          <li data-type="imp">Download button now triggers real compressed file download</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--gold);box-shadow:0 0 8px rgba(245,158,11,.4)"></div>
+        <div class="tl-version" style="color:var(--gold)">v1.1.0</div>
+        <div class="tl-date">January 2026</div>
+        <div class="tl-title">🎨 Premium UI Redesign</div>
+        <ul class="tl-changes">
+          <li data-type="new">Complete UI overhaul — dark glassmorphism aesthetic</li>
+          <li data-type="new">Syne + Outfit font pairing</li>
+          <li data-type="new">Ambient blob backgrounds with CSS blur</li>
+          <li data-type="new">Subtle grid overlay on background</li>
+          <li data-type="new">Animated hero section with staggered fadeUp</li>
+          <li data-type="new">Compression level selector (Low / Balanced / Maximum)</li>
+          <li data-type="new">Progress bar with animated fill and step labels</li>
+          <li data-type="new">Stats grid in result card</li>
+          <li data-type="new">Features, Tools, How It Works, Pricing sections</li>
+          <li data-type="imp">Named project "Ziphay" — replacing placeholder name</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--muted);box-shadow:none"></div>
+        <div class="tl-version" style="color:var(--muted)">v1.0.0</div>
+        <div class="tl-date">December 2025</div>
+        <div class="tl-title">🌱 Initial Release</div>
+        <ul class="tl-changes">
+          <li data-type="new">Basic HTML/CSS/JS file compression prototype</li>
+          <li data-type="new">FastAPI Python backend (uvicorn)</li>
+          <li data-type="new">SQLite database via SQLAlchemy for compression logs</li>
+          <li data-type="new">File drag-and-drop with simulated compression</li>
+          <li data-type="new">CORS-enabled backend connecting to vanilla frontend</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div style="margin-top:40px;padding:20px 24px;background:var(--card);border:1px solid var(--border);border-radius:var(--r2)">
+      <p style="color:var(--muted);font-size:.84rem">📬 Want to be notified of future releases? <a href="contact.html" style="color:var(--teal)">Get in touch</a> or check the <a href="status.html" style="color:var(--teal)">Status page</a> for live system health.</p>
+    </div>
+  </div>
+
+  <footer class="pg-footer">© 2026 <strong>Abhay Donde</strong> · Ziphay. &nbsp;·&nbsp;<a href="index.html">Home</a> &nbsp;·&nbsp;<a href="status.html">Status</a></footer>
+  <script src="theme-toggle.js"></script>
+</body>
+</html>

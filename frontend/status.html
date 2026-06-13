@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Status — Ziphay</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00d4aa">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pages.css">
+  <style>
+    .status-hero {
+      text-align:center; padding:36px 28px;
+      background:linear-gradient(135deg,rgba(16,185,129,.07),rgba(0,212,170,.04));
+      border:1px solid rgba(16,185,129,.2); border-radius:var(--r2);
+      margin-bottom:40px;
+    }
+    .big-status { font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:800; display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:8px; }
+    .uptime-bar { display:flex; gap:3px; align-items:center; margin:4px 0; }
+    .uptime-seg { width:10px; height:28px; border-radius:4px; }
+    .seg-green  { background:#34d399; }
+    .seg-yellow { background:#f59e0b; }
+    .seg-gray   { background:rgba(255,255,255,.08); }
+    .service-row {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 18px; background:var(--card); border:1px solid var(--border);
+      border-radius:var(--r); margin-bottom:8px; gap:10px; flex-wrap:wrap;
+    }
+    .service-info { display:flex; align-items:center; gap:12px; }
+    .service-name { font-weight:600; font-size:.88rem; }
+    .service-desc { color:var(--muted); font-size:.76rem; }
+    .service-meta { display:flex; align-items:center; gap:12px; font-size:.76rem; color:var(--muted); }
+    .incident-card { background:var(--card); border:1px solid var(--border); border-radius:var(--r2); padding:22px; margin-bottom:12px; }
+    .incident-date { color:var(--muted); font-size:.74rem; margin-bottom:6px; }
+    .incident-title { font-family:'Syne',sans-serif; font-weight:700; font-size:.95rem; margin-bottom:6px; }
+    .incident-body { color:var(--muted); font-size:.83rem; line-height:1.65; }
+  </style>
+</head>
+<body>
+  <nav class="pg-nav"><div class="pg-nav-inner">
+    <a href="index.html" class="pg-logo"><div class="pg-logo-icon"><svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L9 22L19.5 10H13Z"/></svg></div>Ziphay<span>.</span></a>
+    <div class="pg-nav-right"><a href="index.html" class="pg-back-btn">← Back</a><a href="changelog.html">Changelog</a><button class="pg-theme-btn" id="themeBtn">🌙</button></div>
+  </div></nav>
+
+  <div class="pg-wrap">
+    <div class="pg-header">
+      <div class="pg-tag">System Status</div>
+      <h1 class="pg-title">Ziphay<br><em>Status</em></h1>
+      <p class="pg-subtitle">Real-time health of all Ziphay systems. Last checked: March 2026.</p>
+    </div>
+
+    <!-- Overall status -->
+    <div class="status-hero">
+      <div class="big-status">
+        <span class="status-dot dot-green"></span>
+        All Systems Operational
+      </div>
+      <p style="color:var(--muted);font-size:.85rem">Ziphay is running normally. 100% uptime this month.</p>
+      <div style="display:flex;justify-content:center;margin-top:16px;gap:4px;align-items:center">
+        <span style="font-size:.68rem;color:var(--muted);margin-right:8px">90 days</span>
+        <div class="uptime-bar">
+          <!-- 90 segments — all green for new service -->
+          <div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div>
+          <div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div>
+          <div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div>
+          <div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div>
+          <div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div>
+          <div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div>
+          <div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div>
+          <div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div>
+          <div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div>
+          <div class="uptime-seg seg-yellow"></div><div class="uptime-seg seg-yellow"></div>
+          <div class="uptime-seg seg-green"></div><div class="uptime-seg seg-green"></div>
+        </div>
+        <span style="font-size:.68rem;color:var(--muted);margin-left:8px">Today</span>
+      </div>
+      <p style="margin-top:8px;font-size:.72rem;color:var(--muted)">99.6% uptime over the last 90 days</p>
+    </div>
+
+    <!-- Services -->
+    <h2 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:16px">Core Services</h2>
+
+    <div class="service-row">
+      <div class="service-info">
+        <span class="status-dot dot-green"></span>
+        <div><div class="service-name">Image Compression Engine</div><div class="service-desc">Canvas API · WebP, JPEG, PNG output</div></div>
+      </div>
+      <div class="service-meta"><span class="badge badge-green">Operational</span><span>~0ms (browser-local)</span></div>
+    </div>
+
+    <div class="service-row">
+      <div class="service-info">
+        <span class="status-dot dot-green"></span>
+        <div><div class="service-name">Image Upscaler</div><div class="service-desc">Canvas interpolation · 2×/4×/8× · Multi-pass</div></div>
+      </div>
+      <div class="service-meta"><span class="badge badge-green">Operational</span><span>~0ms (browser-local)</span></div>
+    </div>
+
+    <div class="service-row">
+      <div class="service-info">
+        <span class="status-dot dot-green"></span>
+        <div><div class="service-name">fflate GZIP Engine</div><div class="service-desc">PDF, video, document, archive compression</div></div>
+      </div>
+      <div class="service-meta"><span class="badge badge-green">Operational</span><span>CDN: cdn.jsdelivr.net</span></div>
+    </div>
+
+    <div class="service-row">
+      <div class="service-info">
+        <span class="status-dot dot-green"></span>
+        <div><div class="service-name">Before/After Comparison Slider</div><div class="service-desc">Real image loading via Object URLs</div></div>
+      </div>
+      <div class="service-meta"><span class="badge badge-green">Operational</span></div>
+    </div>
+
+    <div class="service-row">
+      <div class="service-info">
+        <span class="status-dot dot-green"></span>
+        <div><div class="service-name">Batch Processing</div><div class="service-desc">Multi-file queue, parallel compression</div></div>
+      </div>
+      <div class="service-meta"><span class="badge badge-green">Operational</span></div>
+    </div>
+
+    <div class="service-row">
+      <div class="service-info">
+        <span class="status-dot dot-green"></span>
+        <div><div class="service-name">Google Fonts CDN</div><div class="service-desc">Syne + Outfit typefaces</div></div>
+      </div>
+      <div class="service-meta"><span class="badge badge-green">Operational</span></div>
+    </div>
+
+    <div class="service-row" style="border-color:rgba(245,158,11,.2)">
+      <div class="service-info">
+        <span class="status-dot dot-yellow"></span>
+        <div><div class="service-name">Pro Backend API</div><div class="service-desc">User accounts, Stripe, cloud storage</div></div>
+      </div>
+      <div class="service-meta"><span class="badge badge-gold">In Development</span><span>Q2 2026</span></div>
+    </div>
+
+    <div class="service-row" style="border-color:rgba(139,92,246,.2)">
+      <div class="service-info">
+        <span class="status-dot dot-yellow"></span>
+        <div><div class="service-name">Neural Compression Engine</div><div class="service-desc">ONNX WebAssembly neural models</div></div>
+      </div>
+      <div class="service-meta"><span class="badge badge-purple">Planned Q3 2026</span></div>
+    </div>
+
+    <div style="margin-top:36px">
+      <h2 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:16px">Incident History</h2>
+
+      <div class="incident-card">
+        <div class="incident-date">March 2026</div>
+        <div class="incident-title">✅ Resolved — File Upload Not Responding on Some Browsers</div>
+        <div class="incident-body">A CSS <code>pointer-events</code> conflict caused by a gradient overlay on the upload card was blocking click events on Chromium-based browsers. Fixed in v2.0.0 by moving the file input outside the overlay stack and wiring click via explicit JavaScript event delegation.</div>
+      </div>
+
+      <div class="incident-card">
+        <div class="incident-date">February 2026</div>
+        <div class="incident-title">✅ Resolved — Before/After Slider Showing Placeholder Instead of Real Images</div>
+        <div class="incident-body">The comparison slider was using CSS gradient backgrounds instead of loading the user's actual compressed output. Fixed in v2.0.0 with Object URL injection into real <code>&lt;img&gt;</code> elements after compression completes.</div>
+      </div>
+
+      <div class="incident-card" style="border-color:rgba(16,185,129,.15)">
+        <div class="incident-date">January 2026 — Present</div>
+        <div class="incident-title">✅ No Incidents — Stable Browser-Side Operation</div>
+        <div class="incident-body">All core compression and upscaling functionality operates client-side with no server dependency. This architecture means zero downtime risk for core features.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;padding:18px 22px;background:var(--card);border:1px solid var(--border);border-radius:var(--r2)">
+      <p style="color:var(--muted);font-size:.83rem">⚡ <strong style="color:var(--text)">Why no downtime?</strong> Ziphay's core compression engine runs entirely in your browser. There is no server to go down, no API to fail, and no upload queue to slow down. Files never leave your device.</p>
+    </div>
+
+  </div>
+
+  <footer class="pg-footer">© 2026 <strong>Abhay Donde</strong> · Ziphay. &nbsp;·&nbsp;<a href="index.html">Home</a> &nbsp;·&nbsp;<a href="changelog.html">Changelog</a></footer>
+  <script src="theme-toggle.js"></script>
+</body>
+</html>

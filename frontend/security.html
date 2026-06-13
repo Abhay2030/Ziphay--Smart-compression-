@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security — Ziphay</title>
+  <meta name="description" content="Ziphay's 3-layer security architecture, blockchain proof-of-ownership, and Pro security roadmap. Learn how we protect your files.">
+    <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00d4aa">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pages.css">
+  <style>
+    /* ── Layer dividers ── */
+    .layer-divider{display:flex;align-items:center;gap:14px;margin:48px 0 24px}
+    .layer-num{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;flex-shrink:0;color:#fff}
+    .layer-num.l1{background:linear-gradient(135deg,#00d4aa,#00b893)}
+    .layer-num.l2{background:linear-gradient(135deg,#8b5cf6,#6d28d9)}
+    .layer-num.l3{background:linear-gradient(135deg,#f59e0b,#d97706)}
+    .layer-label{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:-.02em}
+    .layer-line{flex:1;height:1px;background:var(--border)}
+
+    /* ── Security cards ── */
+    .sec-pillar{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:22px 24px;margin-bottom:12px;display:flex;gap:16px;align-items:flex-start;transition:.25s}
+    .sec-pillar:hover{border-color:rgba(0,212,170,.2);box-shadow:0 0 24px rgba(0,212,170,.04)}
+    .sec-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+    .sec-icon.ic-teal{background:rgba(0,212,170,.1)}
+    .sec-icon.ic-purple{background:rgba(139,92,246,.1)}
+    .sec-icon.ic-gold{background:rgba(245,158,11,.1)}
+    .sec-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;margin-bottom:4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .sec-body{color:var(--muted);font-size:.84rem;line-height:1.65}
+    .sec-badge{display:inline-flex;align-items:center;padding:2px 10px;border-radius:100px;font-size:.62rem;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+    .sec-badge.sb-live{background:rgba(16,185,129,.12);color:#34d399;border:1px solid rgba(16,185,129,.2)}
+    .sec-badge.sb-pro{background:rgba(139,92,246,.1);color:#8b5cf6;border:1px solid rgba(139,92,246,.2)}
+    .sec-badge.sb-free{background:rgba(0,212,170,.08);color:var(--teal);border:1px solid rgba(0,212,170,.2)}
+
+    /* ── Blockchain section ── */
+    .chain-section{margin:56px 0 0}
+    .chain-header{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+    .chain-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(139,92,246,.15),rgba(0,212,170,.15));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+    .chain-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.25rem;letter-spacing:-.02em}
+    .chain-intro{color:var(--muted);font-size:.88rem;line-height:1.7;margin-bottom:28px;max-width:640px}
+
+    /* Pipeline */
+    .pipeline{display:flex;align-items:center;gap:0;margin:0 0 32px;overflow-x:auto;padding:8px 0}
+    .pipe-step{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:100px;text-align:center}
+    .pipe-dot{width:42px;height:42px;border-radius:50%;background:var(--card);border:2px solid rgba(0,212,170,.3);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:.2s}
+    .pipe-step:hover .pipe-dot{border-color:var(--teal);box-shadow:0 0 16px rgba(0,212,170,.15)}
+    .pipe-label{font-size:.68rem;font-weight:600;color:var(--muted);max-width:90px;line-height:1.4}
+    .pipe-arrow{color:var(--teal);font-size:.9rem;font-weight:700;flex-shrink:0;margin:0 -2px;padding-bottom:20px}
+
+    /* Proves / Cannot */
+    .proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px}
+    .proof-col{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:20px 22px}
+    .proof-col h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .proof-col ul{list-style:none;padding:0;margin:0}
+    .proof-col li{color:var(--muted);font-size:.82rem;line-height:1.7;padding:3px 0;display:flex;align-items:flex-start;gap:8px}
+    .proof-col li::before{flex-shrink:0;font-weight:700;font-size:.78rem}
+    .proof-col.pf-yes li::before{content:'✓';color:#34d399}
+    .proof-col.pf-no  li::before{content:'✗';color:#f87171}
+    .proof-col.pf-yes h4 .pf-badge{background:rgba(16,185,129,.12);color:#34d399;padding:2px 8px;border-radius:100px;font-size:.6rem;font-weight:700}
+    .proof-col.pf-no  h4 .pf-badge{background:rgba(248,113,113,.1);color:#f87171;padding:2px 8px;border-radius:100px;font-size:.6rem;font-weight:700}
+
+    /* ── Polygon section ── */
+    .poly-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:8px}
+    .poly-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:22px 24px;transition:.25s}
+    .poly-card:hover{border-color:rgba(139,92,246,.2)}
+    .poly-card h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.92rem;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+    .poly-card p{color:var(--muted);font-size:.82rem;line-height:1.65}
+
+    /* ── Build order stepper ── */
+    .stepper-section{margin:56px 0 0}
+    .stepper{position:relative;padding-left:42px}
+    .stepper::before{content:'';position:absolute;left:17px;top:6px;bottom:6px;width:2px;background:var(--border);border-radius:2px}
+    .step-item{position:relative;padding:0 0 24px 22px}
+    .step-item:last-child{padding-bottom:0}
+    .step-num{position:absolute;left:-42px;top:-1px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.72rem;color:#fff;z-index:1}
+    .step-num.sn-done{background:linear-gradient(135deg,#00d4aa,#00b893);box-shadow:0 0 12px rgba(0,212,170,.3)}
+    .step-num.sn-todo{background:var(--card);border:2px solid var(--border);color:var(--muted)}
+    .step-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;margin-bottom:2px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .step-desc{color:var(--muted);font-size:.78rem;line-height:1.55}
+    .step-badge{display:inline-flex;padding:2px 10px;border-radius:100px;font-size:.6rem;font-weight:700;letter-spacing:.04em}
+    .step-badge.stb-done{background:rgba(16,185,129,.12);color:#34d399;border:1px solid rgba(16,185,129,.2)}
+    .step-badge.stb-tool{background:rgba(139,92,246,.1);color:#8b5cf6;border:1px solid rgba(139,92,246,.2)}
+
+    /* ── Responsive ── */
+    @media(max-width:640px){
+      .proof-grid,.poly-grid{grid-template-columns:1fr}
+      .pipeline{flex-wrap:wrap;justify-content:center;gap:6px}
+      .pipe-arrow{transform:rotate(90deg);padding-bottom:0;margin:2px 0}
+      .sec-pillar{flex-direction:column;gap:10px}
+    }
+  </style>
+</head>
+<body>
+  <nav class="pg-nav"><div class="pg-nav-inner">
+    <a href="index.html" class="pg-logo"><div class="pg-logo-icon"><svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L9 22L19.5 10H13Z"/></svg></div>Ziphay<span>.</span></a>
+    <div class="pg-nav-right"><a href="index.html" class="pg-back-btn">← Back</a><a href="privacy.html">Privacy</a><button class="pg-theme-btn" id="themeBtn">🌙</button></div>
+  </div></nav>
+
+  <div class="pg-wrap">
+
+    <!-- ═══ HERO ═══ -->
+    <div class="pg-header">
+      <div class="pg-tag">Security Architecture</div>
+      <h1 class="pg-title">Security at<br><em>Ziphay</em></h1>
+      <p class="pg-subtitle">Three layers of defence, blockchain proof-of-ownership, and a clear Pro roadmap — here's exactly how we protect your files.</p>
+    </div>
+
+    <!-- Guarantee banner -->
+    <div style="padding:16px 20px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:var(--r2);margin-bottom:40px">
+      <p style="font-size:.88rem;color:var(--text);font-weight:600;margin-bottom:4px">🛡️ Our fundamental guarantee</p>
+      <p style="font-size:.84rem;color:var(--muted)">The best way to protect your files is to never receive them. Ziphay's core engine processes all files locally in your browser — no file data is ever transmitted over the network.</p>
+    </div>
+
+    <!-- ═══════════ LAYER 1 — Transport Security ═══════════ -->
+    <div class="layer-divider">
+      <div class="layer-num l1">1</div>
+      <span class="layer-label">Transport Security</span>
+      <div class="layer-line"></div>
+    </div>
+
+    <div class="sec-pillar">
+      <div class="sec-icon ic-teal">🔒</div>
+      <div>
+        <div class="sec-title">HTTPS / TLS 1.3 <span class="sec-badge sb-live">Already enabled</span></div>
+        <div class="sec-body">All data in transit is encrypted end-to-end. Firebase enforces HTTPS by default with TLS 1.3 — protecting against man-in-the-middle attacks with zero extra configuration.</div>
+      </div>
+    </div>
+
+    <div class="sec-pillar">
+      <div class="sec-icon ic-teal">🌐</div>
+      <div>
+        <div class="sec-title">Browser-side Processing <span class="sec-badge sb-live">Already live</span></div>
+        <div class="sec-body">Ziphay's core engine never uploads files to a server. Files stay in the user's browser memory — zero upload means zero upload attack surface. The safest possible architecture.</div>
+      </div>
+    </div>
+
+    <div class="sec-pillar">
+      <div class="sec-icon ic-teal">🚦</div>
+      <div>
+        <div class="sec-title">Rate Limiting + File Validation <span class="sec-badge sb-pro">Add with Pro</span></div>
+        <div class="sec-body">When Pro backend uploads are added: validate MIME type server-side, cap file sizes, rate-limit per user (e.g. 10 req/min), and reject executables and archives with malware signatures.</div>
+      </div>
+    </div>
+
+    <!-- ═══════════ LAYER 2 — Storage Security ═══════════ -->
+    <div class="layer-divider">
+      <div class="layer-num l2">2</div>
+      <span class="layer-label">Storage Security</span>
+      <div class="layer-line"></div>
+    </div>
+
+    <div class="sec-pillar">
+      <div class="sec-icon ic-purple">🗄️</div>
+      <div>
+        <div class="sec-title">Firebase Storage Encryption <span class="sec-badge sb-free">Free, automatic</span></div>
+        <div class="sec-body">All files in Firebase Storage are encrypted at rest with AES-256 automatically. Google manages the keys. No code required — it's on by default.</div>
+      </div>
+    </div>
+
+    <div class="sec-pillar">
+      <div class="sec-icon ic-purple">🔑</div>
+      <div>
+        <div class="sec-title">Client-side Encryption <span class="sec-badge sb-pro">Add for Pro</span></div>
+        <div class="sec-body">Before uploading, encrypt the file in the browser using AES-256-GCM (Web Crypto API). Only the user holds the decryption key — even Ziphay cannot read the file. True zero-knowledge storage.</div>
+      </div>
+    </div>
+
+    <div class="sec-pillar">
+      <div class="sec-icon ic-purple">⏱️</div>
+      <div>
+        <div class="sec-title">Auto-deletion Policy <span class="sec-badge sb-pro">Add with Pro</span></div>
+        <div class="sec-body">Firebase Cloud Functions trigger a scheduled job to delete all uploaded files after 1 hour. Files are not kept longer than needed — this is Ziphay's core privacy promise.</div>
+      </div>
+    </div>
+
+    <!-- ═══════════ LAYER 3 — Access Control ═══════════ -->
+    <div class="layer-divider">
+      <div class="layer-num l3">3</div>
+      <span class="layer-label">Access Control Security</span>
+      <div class="layer-line"></div>
+    </div>
+
+    <div class="sec-pillar">
+      <div class="sec-icon ic-gold">🛡️</div>
+      <div>
+        <div class="sec-title">Firebase Security Rules <span class="sec-badge sb-live">Already configured</span></div>
+        <div class="sec-body">Firestore and Storage rules ensure users can only access their own files. No user can read, write, or delete another user's data — enforced server-side, not just in the UI.</div>
+      </div>
+    </div>
+
+    <div class="sec-pillar">
+      <div class="sec-icon ic-gold">🎟️</div>
+      <div>
+        <div class="sec-title">Signed URL Downloads <span class="sec-badge sb-pro">Add with Pro</span></div>
+        <div class="sec-body">Pro files are served via short-lived signed URLs (15 min expiry). The URL is useless after expiry — prevents hotlinking and unauthorized sharing of processed files.</div>
+      </div>
+    </div>
+
+    <div class="sec-pillar">
+      <div class="sec-icon ic-gold">🧪</div>
+      <div>
+        <div class="sec-title">Server-side MIME Validation <span class="sec-badge sb-pro">Add with Pro</span></div>
+        <div class="sec-body">Never trust browser-reported file types. On the backend, re-read the file's magic bytes to verify its real type. Reject disguised executables (e.g. .exe renamed to .png).</div>
+      </div>
+    </div>
+
+    <!-- ═══════════ BLOCKCHAIN INTEGRATION ═══════════ -->
+    <div class="chain-section">
+      <div class="chain-header">
+        <div class="chain-icon">⛓️</div>
+        <div class="chain-title">Blockchain Proof-of-Ownership</div>
+      </div>
+      <p class="chain-intro">When a user uploads a file, the backend computes a SHA-256 hash and writes it to a blockchain. This creates a permanent, tamper-proof record: <strong style="color:var(--text)">"This file existed at this timestamp, owned by this wallet."</strong> The file itself is never on the blockchain — only its fingerprint.</p>
+
+      <!-- Pipeline diagram -->
+      <div class="pipeline">
+        <div class="pipe-step">
+          <div class="pipe-dot">📄</div>
+          <div class="pipe-label">User uploads file</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="pipe-dot">🔐</div>
+          <div class="pipe-label">SHA-256 hash computed</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="pipe-dot">⛓️</div>
+          <div class="pipe-label">Hash written to blockchain</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="pipe-dot">🧾</div>
+          <div class="pipe-label">Tx hash returned to user</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="pipe-dot">✅</div>
+          <div class="pipe-label">Proof of ownership forever</div>
+        </div>
+      </div>
+
+      <!-- Proves vs Cannot -->
+      <div class="proof-grid">
+        <div class="proof-col pf-yes">
+          <h4>What blockchain proves <span class="pf-badge">Real value</span></h4>
+          <ul>
+            <li>This exact file existed at this timestamp</li>
+            <li>This user was the first to process it</li>
+            <li>The file has not been tampered with since</li>
+            <li>Ownership is publicly verifiable by anyone</li>
+          </ul>
+        </div>
+        <div class="proof-col pf-no">
+          <h4>What blockchain cannot do <span class="pf-badge">Misconception</span></h4>
+          <ul>
+            <li>Protect the file during transfer</li>
+            <li>Encrypt the file content</li>
+            <li>Prevent unauthorized access</li>
+            <li>Replace HTTPS or Firebase Rules</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ POLYGON RECOMMENDATION ═══════════ -->
+    <hr class="pg-divider">
+    <div class="prose" style="margin-bottom:8px"><h2 style="margin-top:0">Recommended Blockchain: Polygon (MATIC)</h2></div>
+
+    <div class="poly-grid">
+      <div class="poly-card" style="border-color:rgba(139,92,246,.18)">
+        <h4>💜 Polygon Network <span class="sec-badge sb-pro" style="font-size:.58rem">Recommended</span></h4>
+        <p>Ethereum-compatible L2 chain. Gas fees are fractions of a cent (vs $5–$50 on Ethereum mainnet). Fast finality (~2s). Widely supported. Free testnets for development.</p>
+      </div>
+      <div class="poly-card">
+        <h4>🔷 Alternatives</h4>
+        <p><strong style="color:var(--text)">Solana</strong> — fastest, cheapest, but different SDK.<br>
+        <strong style="color:var(--text)">Ethereum</strong> — most trusted, but expensive gas.<br>
+        <strong style="color:var(--text)">IPFS + Filecoin</strong> — decentralised file storage, not just hashing.</p>
+      </div>
+    </div>
+
+    <!-- ═══════════ PRO BUILD ORDER ═══════════ -->
+    <div class="stepper-section">
+      <hr class="pg-divider">
+      <div class="prose" style="margin-bottom:24px"><h2 style="margin-top:0">Full Pro Security Stack — Build Order</h2></div>
+
+      <div class="stepper">
+        <div class="step-item">
+          <div class="step-num sn-done">1</div>
+          <div class="step-name">Firebase Rules <span class="step-badge stb-done">✓ Already done</span></div>
+          <div class="step-desc">Firestore & Storage security rules enforce per-user access control.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num sn-todo">2</div>
+          <div class="step-name">Rate Limiting <span class="step-badge stb-tool">Cloud Functions</span></div>
+          <div class="step-desc">Throttle API requests per user to prevent abuse. 10 req/min default ceiling.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num sn-todo">3</div>
+          <div class="step-name">MIME Validation <span class="step-badge stb-tool">FastAPI / Node</span></div>
+          <div class="step-desc">Server-side magic-byte checking to reject disguised executables and malware.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num sn-todo">4</div>
+          <div class="step-name">Auto-deletion <span class="step-badge stb-tool">Cloud Scheduler</span></div>
+          <div class="step-desc">Scheduled job deletes all uploaded files after 1 hour. Core privacy promise.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num sn-todo">5</div>
+          <div class="step-name">Client Encryption <span class="step-badge stb-tool">Web Crypto API</span></div>
+          <div class="step-desc">AES-256-GCM encryption in the browser before upload. Zero-knowledge storage.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num sn-todo">6</div>
+          <div class="step-name">Blockchain Proof <span class="step-badge stb-tool">Polygon + ethers.js</span></div>
+          <div class="step-desc">SHA-256 file hash written to Polygon for tamper-proof ownership verification.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ RESPONSIBLE DISCLOSURE ═══════════ -->
+    <hr class="pg-divider">
+    <div class="prose">
+      <h2>Responsible Disclosure</h2>
+      <p>If you discover a security vulnerability in Ziphay, please report it responsibly. We ask that you do not publicly disclose the issue until we have had a reasonable opportunity to address it.</p>
+      <p>To report a vulnerability, contact <strong>Abhay Donde</strong> via the <a href="contact.html">Contact page</a> and select "Bug Report" as the topic. Please include a detailed description of the vulnerability and steps to reproduce it.</p>
+      <p>We aim to respond to security reports within 72 hours and resolve critical issues within 7 days.</p>
+    </div>
+  </div>
+
+  <footer class="pg-footer">© 2026 <strong>Abhay Donde</strong> · Ziphay. &nbsp;·&nbsp;<a href="index.html">Home</a> &nbsp;·&nbsp;<a href="privacy.html">Privacy</a> &nbsp;·&nbsp;<a href="terms.html">Terms</a></footer>
+  <script src="theme-toggle.js"></script>
+</body>
+</html>

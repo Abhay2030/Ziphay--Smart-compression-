@@ -1,0 +1,29 @@
+# ══════════════════════════════════════════════════
+# Ziphay Backend Dependencies (Security Hardened)
+# ══════════════════════════════════════════════════
+
+# ── Core Framework ──
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.18
+
+# ── Image Processing ──
+Pillow==11.1.0
+
+# ── Database ──
+SQLAlchemy==2.0.36
+
+# ── PDF Processing ──
+pymupdf==1.25.3
+
+# ── Authentication (replaces python-jose which has known CVEs) ──
+PyJWT[crypto]==2.10.1
+
+# ── Password Hashing ──
+passlib[bcrypt]==1.7.4
+
+# ── Payments ──
+stripe==11.4.1
+
+# ── Environment Management ──
+python-dotenv==1.0.1

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Ziphay</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00d4aa">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pages.css">
+  <style>
+    .blog-grid { display:grid; gap:20px; }
+    .blog-card {
+      background:var(--card); border:1px solid var(--border); border-radius:var(--r2);
+      padding:28px; transition:.25s; text-decoration:none; display:block; color:inherit;
+    }
+    .blog-card:hover { border-color:rgba(0,212,170,.22); transform:translateY(-3px); box-shadow:0 0 28px rgba(0,212,170,.06); }
+    .blog-meta { display:flex; align-items:center; gap:10px; margin-bottom:12px; flex-wrap:wrap; }
+    .blog-date { color:var(--muted); font-size:.75rem; }
+    .blog-title { font-family:'Syne',sans-serif; font-size:1.25rem; font-weight:800; margin-bottom:10px; line-height:1.25; letter-spacing:-.02em; }
+    .blog-excerpt { color:var(--muted); font-size:.87rem; line-height:1.7; }
+    .blog-author { display:flex; align-items:center; gap:10px; margin-top:16px; padding-top:14px; border-top:1px solid var(--border); }
+    .author-avatar { width:34px; height:34px; border-radius:50%; background:linear-gradient(135deg,#00d4aa,#8b5cf6); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+    .author-name { font-size:.8rem; font-weight:600; }
+    .author-role { font-size:.72rem; color:var(--muted); }
+
+    /* Article view */
+    .article-hero { background:linear-gradient(135deg,rgba(0,212,170,.07),rgba(139,92,246,.04)); border:1px solid rgba(0,212,170,.14); border-radius:var(--r2); padding:36px; margin-bottom:40px; }
+    .article-hero .pg-title { font-size:clamp(1.7rem,4vw,2.6rem); }
+    .author-note { background:var(--card); border:1px solid var(--border); border-radius:var(--r2); padding:22px; display:flex; gap:16px; align-items:flex-start; margin-top:40px; }
+    .author-note-avatar { width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,#00d4aa,#8b5cf6); display:flex; align-items:center; justify-content:center; font-size:1.6rem; flex-shrink:0; box-shadow:0 0 20px rgba(0,212,170,.25); }
+  </style>
+</head>
+<body>
+
+  <nav class="pg-nav">
+    <div class="pg-nav-inner">
+      <a href="index.html" class="pg-logo">
+        <div class="pg-logo-icon"><svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L9 22L19.5 10H13Z"/></svg></div>
+        Ziphay<span>.</span>
+      </a>
+      <div class="pg-nav-right">
+        <a href="index.html" class="pg-back-btn">← Back to Ziphay</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <button class="pg-theme-btn" id="themeBtn">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="pg-wrap">
+
+    <div class="pg-header">
+      <div class="pg-tag">Ziphay Blog</div>
+      <h1 class="pg-title">Ideas, Updates &<br><em>Behind the Build</em></h1>
+      <p class="pg-subtitle">Thoughts on building Ziphay, the future of file compression, and what's coming next.</p>
+    </div>
+
+    <!-- ══ FEATURED ARTICLE ══ -->
+    <div class="article-hero">
+      <div class="blog-meta">
+        <span class="badge badge-teal">⭐ Featured</span>
+        <span class="badge badge-gold">Startup Story</span>
+        <span class="blog-date">March 2026</span>
+      </div>
+      <h2 class="blog-title" style="font-family:'Syne',sans-serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;margin-bottom:14px;letter-spacing:-.03em;line-height:1.15">
+        Building Ziphay: How I'm Turning a Simple Tool Into a<br style="display:none"> Full SaaS Platform
+      </h2>
+      <p class="blog-excerpt">From a side project solving a personal frustration to a market-ready startup — the full story behind Ziphay, what makes it different, and where it's going.</p>
+      <div class="blog-author">
+        <div class="author-avatar">👨‍💻</div>
+        <div><div class="author-name">Abhay Donde</div><div class="author-role">Founder · Software Engineer · Nashik, Maharashtra</div></div>
+      </div>
+    </div>
+
+    <div class="prose">
+
+      <h2>The Problem That Started It All</h2>
+      <p>Every developer and creator has been there. You have a 4 MB image, a client needs it under 1 MB, and every compression website you open is a disaster: fake "Download" buttons, ads that hijack your screen, limited format support, and tools that store your private files on random servers for days.</p>
+      <p>I was frustrated enough to build my own. What started as a single HTML file with a Canvas API call became something much bigger — and much more interesting.</p>
+
+      <h2>What Ziphay Is Today</h2>
+      <p>Ziphay is a <strong>100% browser-based</strong> file compression and upscaling platform. No servers, no uploads, no accounts required for core features. Every computation happens inside the user's own browser using:</p>
+      <ul>
+        <li><strong>Canvas API</strong> — real image compression and quality-controlled export to WebP, JPEG, or PNG</li>
+        <li><strong>fflate</strong> — a high-performance DEFLATE/GZIP engine compiled to JavaScript, used for PDFs, documents, and archives</li>
+        <li><strong>Canvas upscaling</strong> — multi-pass interpolation for 2×, 4×, and 8× image upscaling with three quality modes</li>
+      </ul>
+      <p>The UI was built entirely from scratch — no CSS frameworks, no component libraries. Just a design philosophy borrowed from the things I love: clean, fast interfaces that feel inevitable once you're using them.</p>
+
+      <h2>🤖 Why "AI-Powered"?</h2>
+      <p>Ziphay's smart features — goal-based compression profiles (Web, Email, Social, Archive), automatic format selection, estimated size previews, and intelligent quality tuning — are all driven by logic that mimics what a human expert would do when deciding how to compress a file.</p>
+      <p>The roadmap includes integrating actual neural compression models (like those used in modern codec research) to run via WebAssembly directly in the browser. This would unlock genuinely AI-driven quality reconstruction — the same technology behind modern image codecs like AVIF and JPEG XL.</p>
+
+      <h2>📊 The Market Opportunity</h2>
+      <p>The global image optimization software market is growing steadily as web performance becomes a critical metric for businesses. Yet the current tools are either too technical (command-line tools like ImageMagick), too cluttered (ad-filled web apps), or too expensive (enterprise CDN solutions).</p>
+      <p>Ziphay targets the gap in the middle: <strong>prosumer creators, small development teams, and digital agencies</strong> who need reliable, private, fast compression without the enterprise price tag or the ad-filled experience.</p>
+
+      <h2>🗺️ The Roadmap — What's Coming</h2>
+
+      <div class="pg-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span class="pg-card-title">Phase 1 — Core Product (Now ✅)</span>
+          <span class="badge badge-green">Live</span>
+        </div>
+        <p class="pg-card-sub">Browser-based compression, upscaling, goal modes, before/after slider, dark/light mode, batch processing, format conversion.</p>
+      </div>
+
+      <div class="pg-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span class="pg-card-title">Phase 2 — Pro SaaS Features (Q2 2026)</span>
+          <span class="badge badge-teal">In Development</span>
+        </div>
+        <p class="pg-card-sub">User accounts via Firebase, compression history dashboard, cloud storage integration (Google Drive / Dropbox), Stripe-based Pro subscriptions, API access for developers.</p>
+      </div>
+
+      <div class="pg-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span class="pg-card-title">Phase 3 — Neural Compression Engine (Q3 2026)</span>
+          <span class="badge badge-purple">Planned</span>
+        </div>
+        <p class="pg-card-sub">ONNX-based neural compression models running via WebAssembly. Genuine perceptual quality reconstruction — not just resizing. AI-powered video compression using FFmpeg.wasm.</p>
+      </div>
+
+      <div class="pg-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span class="pg-card-title">Phase 4 — Platform & Enterprise (2027)</span>
+          <span class="badge badge-gold">Vision</span>
+        </div>
+        <p class="pg-card-sub">White-label Ziphay for agencies, REST API + webhooks for developer integrations, enterprise SLA contracts, team workspaces, custom branding.</p>
+      </div>
+
+      <h2>💰 Monetisation Model</h2>
+      <p>Ziphay follows a classic freemium SaaS model. The free tier is genuinely useful and always will be — that's non-negotiable. Revenue comes from Pro ($9/month) and Enterprise (custom) tiers that unlock higher file size limits, batch processing, API access, and priority processing queues.</p>
+
+      <h2>What Makes Ziphay Different?</h2>
+      <p>Three things that I believe no current competitor does all at once:</p>
+      <ul>
+        <li><strong>Real privacy.</strong> Files never leave your device on the free tier. No server logs, no retention policy needed.</li>
+        <li><strong>Zero compromises on UI.</strong> Most compression tools look like they were built in 2008. Ziphay is designed for 2026 — premium, fast, and clean.</li>
+        <li><strong>Compression + Upscaling in one.</strong> No other free browser-based tool combines both workflows in one place.</li>
+      </ul>
+
+      <h2>A Personal Note</h2>
+      <p>Building Ziphay has taught me more about product thinking, performance engineering, and user experience than any course I've taken. Every decision — from the teal colour palette to the multi-pass upscaling algorithm — was deliberate.</p>
+      <p>I'm building this as a solo developer while finishing my engineering degree. Every line of code is mine. I believe that's a feature, not a limitation — it means every feature I ship is something I personally tested, iterated on, and believe in.</p>
+      <p><strong>Ziphay is just getting started. Watch this space.</strong></p>
+
+      <hr class="pg-divider">
+
+      <!-- AUTHOR NOTE -->
+      <div class="author-note">
+        <div class="author-note-avatar">👨‍💻</div>
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;margin-bottom:4px">Abhay Donde</div>
+          <div style="color:var(--teal);font-size:.76rem;font-weight:600;margin-bottom:8px">Software Engineer · AI Enthusiast · Founder of Ziphay</div>
+          <p style="color:var(--muted);font-size:.84rem;line-height:1.65;margin:0">Based in Nashik, Maharashtra. Pursuing BE in Computer Engineering at Pravara College. Former Android Dev Intern at Sumago Infotech. Building ScholarBot (AI tutoring), Ziphay (file tools), Air Canvas (CV), and CineAbstra (filmmaking education). Deeply passionate about AI, startups, and the art of cinema.</p>
+          <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+            <a href="about.html" style="color:var(--teal);font-size:.78rem;font-weight:600;text-decoration:none">Read full bio →</a>
+            <a href="contact.html" style="color:var(--muted);font-size:.78rem;text-decoration:none">Contact →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MORE POSTS -->
+    <div style="margin-top:56px">
+      <h2 style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:20px">More Posts</h2>
+      <div class="blog-grid">
+        <div class="blog-card" style="opacity:.6;cursor:default">
+          <div class="blog-meta"><span class="badge badge-muted">Coming Soon</span><span class="blog-date">April 2026</span></div>
+          <div class="blog-title" style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700">How I Built ScholarBot: AI Tutoring for Every University Student</div>
+          <p class="blog-excerpt">The technical deep-dive into building a multimodal AI tutor with Gemini 2.5, Firebase, and a real-time HTML5 whiteboard.</p>
+        </div>
+        <div class="blog-card" style="opacity:.6;cursor:default">
+          <div class="blog-meta"><span class="badge badge-muted">Coming Soon</span><span class="blog-date">May 2026</span></div>
+          <div class="blog-title" style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700">Canvas API Deep Dive: Real Image Compression in the Browser</div>
+          <p class="blog-excerpt">Everything I learned building Ziphay's compression engine — from WebP quality curves to multi-pass upscaling.</p>
+        </div>
+        <div class="blog-card" style="opacity:.6;cursor:default">
+          <div class="blog-meta"><span class="badge badge-muted">Coming Soon</span><span class="blog-date">June 2026</span></div>
+          <div class="blog-title" style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700">Why Cinema Makes Me a Better Developer</div>
+          <p class="blog-excerpt">The unexpected connection between filmmaking, CineAbstra, and building great software products.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="pg-footer">
+    © 2026 <strong>Abhay Donde</strong> · Ziphay. All rights reserved. &nbsp;·&nbsp;
+    <a href="index.html">Home</a> &nbsp;·&nbsp;
+    <a href="about.html">About</a> &nbsp;·&nbsp;
+    <a href="contact.html">Contact</a>
+  </footer>
+
+  <script src="theme-toggle.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "Ziphay — Smart File Compression",
+  "short_name": "Ziphay",
+  "description": "Compress, upscale and enhance files instantly in your browser. No uploads, 100% private, AI-powered.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#060610",
+  "theme_color": "#00d4aa",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+# ══════════════════════════════════════════════════
+# Ziphay .gitignore
+# ══════════════════════════════════════════════════
+
+# ── Environment / Secrets ──
+.env
+.env.*
+!.env.example
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+*.whl
+
+# ── Virtual Environment ──
+venv/
+.venv/
+env/
+
+# ── Database ──
+*.db
+*.sqlite
+*.sqlite3
+
+# ── File Storage (uploaded files) ──
+files_vault/
+
+# ── IDE ──
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Firebase ──
+.firebase/
+
+# ── Node (if applicable) ──
+node_modules/
+
+# ── Logs ──
+*.log

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Abhay Donde · Ziphay</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00d4aa">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pages.css">
+  <style>
+    .about-hero { display:grid; grid-template-columns:1fr auto; gap:32px; align-items:start; margin-bottom:48px; }
+    .avatar-ring {
+      width:100px; height:100px; border-radius:50%;
+      background:linear-gradient(135deg,#00d4aa,#8b5cf6);
+      display:flex; align-items:center; justify-content:center;
+      font-size:2.8rem; flex-shrink:0;
+      box-shadow:0 0 40px rgba(0,212,170,.3);
+    }
+    .skill-tags { display:flex; flex-wrap:wrap; gap:7px; margin:12px 0 20px; }
+    .skill-tag { padding:4px 13px; border-radius:100px; font-size:.73rem; font-weight:600; background:var(--glass); border:1px solid var(--border); color:var(--muted); }
+    .project-card {
+      background:var(--card); border:1px solid var(--border); border-radius:var(--r2);
+      padding:24px; margin-bottom:14px; transition:.25s;
+    }
+    .project-card:hover { border-color:rgba(0,212,170,.22); transform:translateY(-3px); }
+    .project-card-head { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+    .project-emoji { font-size:1.6rem; }
+    .project-name { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; }
+    .project-desc { color:var(--muted); font-size:.84rem; line-height:1.65; }
+    .project-stack { display:flex; flex-wrap:wrap; gap:5px; margin-top:10px; }
+    .stack-tag { padding:2px 9px; border-radius:6px; font-size:.67rem; font-weight:700; background:rgba(0,212,170,.08); color:var(--teal); border:1px solid rgba(0,212,170,.18); }
+    .ziphay-highlight {
+      background:linear-gradient(135deg,rgba(0,212,170,.07),rgba(139,92,246,.05));
+      border:1px solid rgba(0,212,170,.2); border-radius:var(--r2);
+      padding:28px; margin-bottom:14px;
+    }
+    .quote-block {
+      border-left:3px solid var(--teal); padding:12px 20px;
+      background:var(--card); border-radius:0 var(--r) var(--r) 0;
+      color:var(--muted); font-size:.9rem; font-style:italic;
+      margin:20px 0;
+    }
+    @media(max-width:540px){ .about-hero { grid-template-columns:1fr; } .avatar-ring { width:72px; height:72px; font-size:2rem; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="pg-nav">
+    <div class="pg-nav-inner">
+      <a href="index.html" class="pg-logo">
+        <div class="pg-logo-icon"><svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L9 22L19.5 10H13Z"/></svg></div>
+        Ziphay<span>.</span>
+      </a>
+      <div class="pg-nav-right">
+        <a href="index.html" class="pg-back-btn">← Back to Ziphay</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <button class="pg-theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <div class="pg-wrap">
+
+    <!-- HERO -->
+    <div class="about-hero">
+      <div>
+        <div class="pg-tag">About the Creator</div>
+        <h1 class="pg-title">👋 Hello! I'm<br><em>Abhay Donde</em></h1>
+        <p style="color:var(--muted);font-size:.95rem;margin-bottom:14px">Software Engineer · AI Enthusiast · Creative Entrepreneur</p>
+        <p style="color:var(--muted);font-size:.85rem">📍 Nashik, Maharashtra, India</p>
+        <div class="skill-tags" style="margin-top:14px">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">C</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Flask</span>
+          <span class="skill-tag">Firebase</span>
+          <span class="skill-tag">Android</span>
+          <span class="skill-tag">AI / ML</span>
+          <span class="skill-tag">Computer Vision</span>
+        </div>
+      </div>
+      <div class="avatar-ring">👨‍💻</div>
+    </div>
+
+    <!-- BIO -->
+    <div class="prose">
+      <p>I am a passionate developer currently pursuing my <strong>Bachelor of Engineering in Computer Engineering</strong> at Pravara College of Engineering, having recently completed my <strong>Diploma in Computer Technology</strong> from K.K. Wagh Engineering College.</p>
+      <p>I specialize in bridging the gap between complex backend logic and intuitive, visually striking user experiences. My work lives at the intersection of engineering precision and creative vision.</p>
+
+      <div class="quote-block">"I firmly believe that studying the direction, pacing, and visual effects of great films gives me a unique advantage as a developer — it trains me to care deeply about the UI/UX, the flow of an application, and the ultimate story a product tells its users."</div>
+
+      <h2>🎓 Education & Experience</h2>
+      <div class="project-card">
+        <div class="project-card-head">
+          <span class="project-emoji">🎓</span>
+          <div>
+            <div class="project-name">Bachelor of Engineering — Computer Engineering</div>
+            <div style="color:var(--muted);font-size:.8rem">Pravara College of Engineering · Ongoing</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-card-head">
+          <span class="project-emoji">📜</span>
+          <div>
+            <div class="project-name">Diploma in Computer Technology</div>
+            <div style="color:var(--muted);font-size:.8rem">K.K. Wagh Engineering College · Completed</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-card-head">
+          <span class="project-emoji">📱</span>
+          <div>
+            <div class="project-name">Android Developer Intern — Sumago Infotech</div>
+            <div style="color:var(--muted);font-size:.8rem">Built the "AEK Tunes" music application</div>
+          </div>
+        </div>
+        <p class="project-desc">Designed and developed a full-featured Android music player application, gaining hands-on experience with cross-platform mobile architecture and native Android development patterns.</p>
+        <div class="project-stack"><span class="stack-tag">Android</span><span class="stack-tag">Java</span><span class="stack-tag">XML</span></div>
+      </div>
+
+      <hr class="pg-divider">
+
+      <!-- ZIPHAY HIGHLIGHT -->
+      <h2>⚡ Ziphay — The Project You're Using Right Now</h2>
+      <div class="ziphay-highlight">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#00d4aa,#0a8f72);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(0,212,170,.3)">
+            <svg viewBox="0 0 24 24" style="width:22px;fill:white"><path d="M13 2L4.5 13.5H11L9 22L19.5 10H13Z"/></svg>
+          </div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem">Ziphay</div>
+            <div style="color:var(--teal);font-size:.78rem;font-weight:600">Smart Compression. Zero Compromise.</div>
+          </div>
+          <span class="badge badge-teal" style="margin-left:auto">Live Product</span>
+        </div>
+        <p class="project-desc">Ziphay is my vision for what a modern file compression and upscaling tool should feel like — fast, private, beautiful, and genuinely useful. Built entirely with vanilla HTML, CSS, and JavaScript with zero backend dependency, it runs 100% in the user's browser using the Canvas API and fflate GZIP engine.</p>
+        <p class="project-desc" style="margin-top:8px">Every pixel of the UI was crafted from scratch — from the glassmorphism upload card to the real before/after comparison slider. Ziphay represents my belief that developer tools don't have to look like developer tools.</p>
+        <div class="project-stack" style="margin-top:12px">
+          <span class="stack-tag">HTML5</span><span class="stack-tag">CSS3</span><span class="stack-tag">Vanilla JS</span>
+          <span class="stack-tag">Canvas API</span><span class="stack-tag">fflate (GZIP)</span>
+          <span class="stack-tag">WebAssembly-ready</span>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+          <span class="badge badge-green">✓ File Compression</span>
+          <span class="badge badge-teal">✓ Image Upscaling 2×/4×/8×</span>
+          <span class="badge badge-purple">✓ Before/After Slider</span>
+          <span class="badge badge-muted">✓ Dark/Light Mode</span>
+          <span class="badge badge-gold">✓ Goal-based Modes</span>
+        </div>
+      </div>
+
+      <hr class="pg-divider">
+
+      <h2>🤖 ScholarBot — Flagship AI Project</h2>
+      <div class="project-card">
+        <div class="project-card-head">
+          <span class="project-emoji">🤖</span>
+          <div>
+            <div class="project-name">ScholarBot</div>
+            <div style="color:var(--muted);font-size:.78rem">Multimodal AI Tutoring Platform · SaaS Prototype</div>
+          </div>
+          <span class="badge badge-purple" style="margin-left:auto">EdTech + AI</span>
+        </div>
+        <p class="project-desc">My flagship project — an elite, multimodal AI tutoring platform engineered specifically for university students. Representing the intersection of EdTech and generative AI, it operates as a fully-fledged SaaS prototype.</p>
+        <ul style="color:var(--muted);font-size:.83rem;padding-left:18px;margin-top:10px;line-height:1.8">
+          <li><strong>Modern Stack</strong> — Python, Flask, Google Gemini 2.5 Flash AI, Firebase</li>
+          <li><strong>Multimodal Tools</strong> — Interactive HTML5 whiteboard for real-time diagram analysis</li>
+          <li><strong>Collaborative Learning</strong> — Live group study synchronization + secure auth</li>
+          <li><strong>Adaptive AI</strong> — Context-aware personas: "Code Reviewer" to "Professor Mode"</li>
+        </ul>
+        <div class="project-stack" style="margin-top:12px">
+          <span class="stack-tag">Python</span><span class="stack-tag">Flask</span>
+          <span class="stack-tag">Gemini 2.5</span><span class="stack-tag">Firebase</span>
+          <span class="stack-tag">HTML5 Canvas</span>
+        </div>
+      </div>
+
+      <hr class="pg-divider">
+      <h2>💡 More Projects</h2>
+
+      <div class="project-card">
+        <div class="project-card-head"><span class="project-emoji">✋</span><div><div class="project-name">Air Canvas</div><div style="color:var(--muted);font-size:.78rem">Computer Vision · Hand Gesture Recognition</div></div></div>
+        <p class="project-desc">An advanced computer-vision application that lets users draw on a virtual whiteboard using real-time hand gesture recognition. No touch required.</p>
+        <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">OpenCV</span><span class="stack-tag">MediaPipe</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-head"><span class="project-emoji">🌱</span><div><div class="project-name">KrishiMitra</div><div style="color:var(--muted);font-size:.78rem">AgriTech · Farmer Advisory System</div></div></div>
+        <p class="project-desc">A dedicated web-based farmer advisory system designed to bridge the information gap between agricultural science and Indian farmers.</p>
+        <div class="project-stack"><span class="stack-tag">Web</span><span class="stack-tag">Python</span><span class="stack-tag">AI</span></div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-head"><span class="project-emoji">☀️</span><div><div class="project-name">Solarix</div><div style="color:var(--muted);font-size:.78rem">CleanTech · Solar EV Charging</div></div></div>
+        <p class="project-desc">A conceptual web platform advancing solar-powered EV charging infrastructure — combining clean energy and modern mobility.</p>
+        <div class="project-stack"><span class="stack-tag">Web</span><span class="stack-tag">UI/UX</span><span class="stack-tag">CleanTech</span></div>
+      </div>
+
+      <hr class="pg-divider">
+
+      <h2>🎬 CineAbstra — The Creative Edge</h2>
+      <div class="project-card">
+        <div class="project-card-head">
+          <span class="project-emoji">🎬</span>
+          <div><div class="project-name">CineAbstra</div><div style="color:var(--muted);font-size:.78rem">Founder & Creative Director · Upcoming Platform</div></div>
+          <span class="badge badge-gold" style="margin-left:auto">Upcoming</span>
+        </div>
+        <p class="project-desc">Beyond software engineering, I am the Founder and Creative Director of CineAbstra — an upcoming platform dedicated to filmmaking and creative education. I have a profound passion for cinema and visual storytelling.</p>
+        <p class="project-desc" style="margin-top:6px">Studying the direction, pacing, and visual effects of great films gives me a unique edge as a developer — it trains me to care deeply about UI/UX, application flow, and the story a product tells.</p>
+      </div>
+
+      <hr class="pg-divider">
+
+      <h2>🚀 Let's Connect</h2>
+      <p>Whether I'm optimizing an AI API route, training a hand-gesture recognition model, or conceptualizing a new startup — I'm always eager to push boundaries. I'm actively looking for opportunities to collaborate on innovative projects that leverage AI and modern web technologies.</p>
+      <p><strong>Let's connect and build something extraordinary.</strong></p>
+      <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:7px;padding:11px 22px;background:var(--teal);color:#07070f;border-radius:var(--r);font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;text-decoration:none;transition:.2s;box-shadow:0 0 22px rgba(0,212,170,.3)">✉️ Contact Me</a>
+        <a href="blog.html" style="display:inline-flex;align-items:center;gap:7px;padding:11px 22px;background:transparent;color:var(--teal);border:1px solid rgba(0,212,170,.3);border-radius:var(--r);font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;text-decoration:none;transition:.2s;">📝 Read the Blog</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="pg-footer">
+    © 2026 <strong>Abhay Donde</strong> · Ziphay. All rights reserved. &nbsp;·&nbsp;
+    <a href="index.html">Back to Ziphay</a> &nbsp;·&nbsp;
+    <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
+    <a href="terms.html">Terms</a>
+  </footer>
+
+  <script src="theme-toggle.js"></script>
+</body>
+</html>
