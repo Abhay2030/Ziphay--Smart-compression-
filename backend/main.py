@@ -160,8 +160,9 @@ async def security_headers_middleware(request: Request, call_next):
         response.headers["Strict-Transport-Security"] = "max-age=63072000; includeSubDomains; preload"
         response.headers["Content-Security-Policy"] = "default-src 'none'; frame-ancestors 'none'"
 
-    # Remove server identification header
-    response.headers.pop("server", None)
+    # Remove server identification header (MutableHeaders doesn't support .pop())
+    if "server" in response.headers:
+        del response.headers["server"]
 
     return response
 
