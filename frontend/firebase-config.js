@@ -61,6 +61,15 @@ if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
   self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
 }
 
+/* ═══════════════════════════════════════════════════
+   Backend API URL — points to the Render deployment.
+   Used by frontend when calling compression/download endpoints.
+   Falls back to localhost:8000 for local development.
+═══════════════════════════════════════════════════ */
+window.ZIPHAY_API_URL = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+  ? 'http://localhost:8000'
+  : 'https://ziphay-api.onrender.com';
+
 console.log(
   '%c[Ziphay] Firebase config loaded ✓',
   'background:#00d4aa;color:#07070f;padding:2px 8px;border-radius:4px;font-weight:bold'

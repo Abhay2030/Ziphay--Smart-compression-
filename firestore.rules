@@ -52,8 +52,8 @@ service cloud.firestore {
                     && request.resource.data.keys().hasOnly([
                          'displayName', 'photoURL', 'preferences', 'createdAt', 'plan'
                        ])
-                    // On creation, plan must be 'free' or absent
-                    && (!('plan' in request.resource.data) || request.resource.data.plan == 'free');
+                    // On creation, plan can be 'free', 'pro', or absent (all features unlocked)
+                    && (!('plan' in request.resource.data) || request.resource.data.plan in ['free', 'pro']);
 
       // Allow update — only safe fields, NEVER plan/role/admin
       allow update: if request.auth != null

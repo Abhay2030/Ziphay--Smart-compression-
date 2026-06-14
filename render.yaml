@@ -1,0 +1,26 @@
+# ══════════════════════════════════════════════════
+# Ziphay — Render Blueprint (render.yaml)
+# Auto-configures the backend service on Render
+# ══════════════════════════════════════════════════
+
+services:
+  - type: web
+    name: ziphay-api
+    runtime: python
+    region: oregon
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: CORS_ORIGINS
+        value: "https://ziphay.vercel.app,https://ziphay.web.app,https://ziphay.firebaseapp.com"
+      - key: MAX_UPLOAD_SIZE_MB
+        value: "50"
+      - key: LOG_LEVEL
+        value: "INFO"
+    healthCheckPath: /
+    autoDeploy: true

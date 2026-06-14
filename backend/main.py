@@ -72,11 +72,13 @@ elif IS_PRODUCTION:
     ALLOWED_ORIGINS = [
         "https://ziphay.web.app",
         "https://ziphay.firebaseapp.com",
+        "https://ziphay.vercel.app",
     ]
 else:
     ALLOWED_ORIGINS = [
         "https://ziphay.web.app",
         "https://ziphay.firebaseapp.com",
+        "https://ziphay.vercel.app",
         "http://localhost:5500",
         "http://127.0.0.1:5500",
         "http://localhost:3000",
@@ -126,7 +128,7 @@ app = FastAPI(
 if IS_PRODUCTION:
     app.add_middleware(
         TrustedHostMiddleware,
-        allowed_hosts=["ziphay.web.app", "ziphay.firebaseapp.com", "*.run.app"],
+        allowed_hosts=["ziphay.web.app", "ziphay.firebaseapp.com", "ziphay.vercel.app", "*.onrender.com", "*.run.app"],
     )
 
 # CORS — explicit origins, explicit headers
@@ -563,13 +565,14 @@ def get_stats(request: Request, db: Session = Depends(get_db)):
 if __name__ == "__main__":
     import uvicorn
 
+    # Render provides PORT env var; always bind 0.0.0.0 for containerized deployments
+    port = int(os.getenv("PORT", "8000"))
     uvicorn.run(
         "main:app",
-        host="127.0.0.1" if IS_PRODUCTION else "0.0.0.0",
-        port=8000,
+        host="0.0.0.0",
+        port=port,
         reload=not IS_PRODUCTION,
         access_log=True,
-        # Production: disable auto-reload, bind to localhost (behind reverse proxy)
         server_header=False,
         date_header=False,
     )
