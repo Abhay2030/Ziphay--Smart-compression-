@@ -17,7 +17,7 @@ services:
       - key: PYTHON_VERSION
         value: "3.11.9"
       - key: CORS_ORIGINS
-        value: "https://ziphay.vercel.app,https://ziphay.web.app,https://ziphay.firebaseapp.com"
+        value: "https://ziphay-smart-compression.vercel.app,https://ziphay.web.app,https://ziphay.firebaseapp.com"
       - key: MAX_UPLOAD_SIZE_MB
         value: "50"
       - key: LOG_LEVEL
