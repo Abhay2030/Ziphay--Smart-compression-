@@ -1,294 +1,251 @@
-🚀 Ziphay AI — Smart File Compression, Enhancement & Editing Platform
+# 🚀 Ziphay AI — Smart File Compression, Enhancement & Editing Platform
+
 <div align="center">
-Compress Smarter. Enhance Better. Create Faster.
+
+### Compress Smarter. Enhance Better. Create Faster.
 
 Ziphay AI is a next-generation browser-first SaaS platform that enables users to compress, optimize, convert, enhance, and edit files directly in their browser with privacy-focused processing and AI-powered tools.
 
-🌐 Zero unnecessary uploads • 🔒 Privacy First • ⚡ High Performance • 🎨 Premium User Experience
+🌐 **Zero Unnecessary Uploads** • 🔒 **Privacy First** • ⚡ **High Performance** • 🎨 **Premium User Experience**
 
 </div>
-📌 Project Overview
 
-Ziphay AI is designed to be a modern alternative to traditional file optimization tools. The platform combines advanced browser technologies, AI-powered media enhancement, cloud integrations, and a premium SaaS experience.
+---
 
-Unlike many online tools, most processing is performed client-side in the user's browser using technologies like Canvas API, WebAssembly-based libraries, and modern JavaScript APIs, ensuring better privacy and faster processing.
+# 📖 Table of Contents
 
-✨ Core Features
-🗜️ Intelligent File Compression
-Image compression with quality control
-Batch compression support
-ZIP archive generation for multiple files
-Real-time compression previews
-Before/after file comparison
-Visual quality similarity analysis
-🖼️ AI Image Enhancement
-AI background removal
-Image upscaling
-Image denoising
-Quality optimization
-Format conversion
-Metadata handling
-🎥 Media & File Tools
-Image converter
-Resize tools
-Rotate & flip tools
-Watermark support
-PDF utilities
-Multiple format support
-☁️ Smart File Import
+- Overview
+- Key Features
+- Why Ziphay AI
+- Security & Privacy
+- Blockchain Ownership Verification
+- System Architecture
+- Technology Stack
+- User Experience
+- Project Structure
+- Installation
+- Deployment
+- Performance Optimizations
+- Business Model
+- Future Roadmap
+- Security Notice
+- Contributing
+- License
+- Developer
+- Support
 
-Import files from multiple sources:
+---
 
-Drag & Drop upload
-Local device upload
-Clipboard paste (Ctrl + V)
-Google Drive integration
-Dropbox integration
-🔐 Security & Privacy
+# 📌 Overview
 
-Ziphay follows a security-first architecture.
+Ziphay AI is a modern file optimization and enhancement platform built for creators, developers, businesses, students, and professionals who need fast, secure, and intelligent file processing tools.
 
-Browser-First Privacy Model
+Unlike traditional online tools that require users to upload files to remote servers, Ziphay AI adopts a browser-first architecture where most operations happen directly on the user's device.
 
-Most file processing happens locally inside the browser.
+This approach delivers:
 
-Benefits:
+- Better privacy
+- Faster processing
+- Lower bandwidth usage
+- Reduced server dependency
+- Enhanced user trust
 
-No unnecessary file uploads
-Reduced privacy risks
-Faster processing speed
-Lower server costs
-Security Layers
-Layer 1 — Transport Security
-HTTPS/TLS encryption
-Secure communication channels
-File validation and rate limiting architecture
-Layer 2 — Storage Security
-Firebase Storage integration
-Secure file access controls
-Automatic cleanup policies
-Layer 3 — Access Control
-Firebase Authentication
-Firestore security rules
-User-based data isolation
-Protected dashboard access
-🔗 Blockchain Proof of Ownership (Future Roadmap)
+Built using modern web technologies, Ziphay AI combines advanced file processing capabilities with AI-powered enhancement tools and a premium SaaS experience.
 
-Ziphay plans to support blockchain-based file verification.
+---
 
-Workflow
+# 🎯 Vision
+
+To become the world's most trusted and intelligent file optimization platform by combining privacy-first architecture, AI-powered enhancements, and seamless user experiences.
+
+---
+
+# ✨ Key Features
+
+## 🗜️ Intelligent File Compression
+
+Compress files while maintaining maximum quality.
+
+### Features
+
+- Image compression
+- Adjustable compression quality
+- Lossless optimization
+- Batch file compression
+- ZIP archive generation
+- Real-time preview
+- Before & after comparison
+- Compression statistics
+- Visual quality similarity analysis
+
+### Supported Formats
+
+- JPG
+- JPEG
+- PNG
+- WEBP
+- GIF
+- SVG
+
+---
+
+## 🖼️ AI Image Enhancement
+
+Enhance image quality using intelligent processing technologies.
+
+### Features
+
+- AI background removal
+- AI image upscaling
+- AI denoising
+- Sharpness enhancement
+- Color optimization
+- Image restoration
+- Format conversion
+- Metadata handling
+
+---
+
+## 🎥 Media & File Tools
+
+A complete toolkit for file management and editing.
+
+### Available Tools
+
+- Image Converter
+- Image Resizer
+- Crop Tool
+- Rotate Tool
+- Flip Tool
+- Watermark Generator
+- PDF Utilities
+- Batch Processing
+- Format Conversion
+
+---
+
+## ☁️ Smart File Import
+
+Import files from multiple sources.
+
+### Supported Sources
+
+- Drag & Drop
+- Local Device Upload
+- Clipboard Paste (Ctrl + V)
+- Google Drive
+- Dropbox
+- Future Cloud Integrations
+
+---
+
+# 🚀 Why Ziphay AI?
+
+Most online compression tools force users to upload files to remote servers.
+
+Ziphay AI changes that.
+
+### Traditional Platforms
+
+❌ Files uploaded to servers
+
+❌ Privacy concerns
+
+❌ Slower processing
+
+❌ Higher bandwidth usage
+
+❌ Limited transparency
+
+### Ziphay AI
+
+✅ Browser-first processing
+
+✅ Privacy-focused architecture
+
+✅ Faster execution
+
+✅ Reduced server dependency
+
+✅ Better user control
+
+✅ Modern SaaS experience
+
+---
+
+# 🔐 Security & Privacy
+
+Security is one of the core pillars of Ziphay AI.
+
+---
+
+## Browser-First Privacy Model
+
+Most file operations happen directly inside the browser.
+
+Benefits include:
+
+- No unnecessary uploads
+- Better privacy protection
+- Faster processing
+- Reduced risk exposure
+- Lower infrastructure costs
+
+---
+
+## Multi-Layer Security Architecture
+
+### Layer 1 — Transport Security
+
+- HTTPS encryption
+- TLS protection
+- Secure communication channels
+- File validation
+- Request filtering
+- Rate limiting
+
+---
+
+### Layer 2 — Storage Security
+
+- Firebase Storage
+- Secure file access controls
+- Temporary file management
+- Automatic cleanup policies
+
+---
+
+### Layer 3 — Authentication & Access Control
+
+- Firebase Authentication
+- User account protection
+- Firestore Security Rules
+- Protected dashboards
+- User-level isolation
+
+---
+
+# 🔗 Blockchain Ownership Verification (Future)
+
+Ziphay AI plans to introduce blockchain-powered proof of ownership.
+
+This feature will allow creators and businesses to verify digital file authenticity.
+
+---
+
+## Ownership Verification Workflow
+
+```text
 Original File
-      ↓
-Generate SHA-256 Hash
-      ↓
-Create Ownership Proof
-      ↓
-Store Proof on Blockchain
-      ↓
-Verify Authenticity Anytime
-
-Recommended network:
-
-Polygon (MATIC)
-
-Use cases:
-
-Copyright protection
-Content verification
-Digital ownership records
-🏗️ System Architecture
-                     Users
-                       │
-                       ▼
-             Ziphay AI Frontend
-         (HTML • CSS • JavaScript)
-                       │
-                       ▼
-               Firebase Services
-      ┌───────────────┼────────────────┐
-      │               │                │
-      ▼               ▼                ▼
- Firebase Auth    Firestore      Firebase Storage
       │
       ▼
- User Authentication & Profiles
-
-
-          Optional Backend API
-               FastAPI + Python
-                     │
-                     ▼
-        Compression & Server Processing
-🛠 Technology Stack
-Frontend
-HTML5
-CSS3
-Vanilla JavaScript
-Canvas API
-WebAssembly Libraries
-Service Workers
-Progressive Web App (PWA)
-Backend (Optional)
-Python
-FastAPI
-Pillow
-SQLite (Current implementation)
-Cloud & Infrastructure
-Firebase Authentication
-Cloud Firestore
-Firebase Storage
-Firebase Hosting
-Vercel Deployment
-Render Deployment
-🎨 Premium User Experience
-
-Ziphay includes modern SaaS-level design:
-
-Glassmorphism UI
-Dark / Light themes
-Smooth animations
-3D card interactions
-Animated gradients
-Responsive mobile-first design
-Accessibility improvements
-Offline support
-📂 Project Structure
-ziphay/
-│
-├── frontend/
-│   ├── index.html
-│   ├── style.css
-│   ├── script.js
-│   ├── animations.js
-│   ├── dashboard.html
-│   ├── converter.html
-│   ├── tools.html
-│   └── assets
-│
-├── backend/
-│   ├── main.py
-│   ├── database.py
-│   ├── requirements.txt
-│
-├── firebase.json
-├── firestore.rules
-├── storage.rules
-├── vercel.json
-├── render.yaml
-├── README.md
-└── .gitignore
-🚀 Deployment
-Frontend Deployment
-Vercel
-Framework: Other
-Root Directory: frontend
-Automatic GitHub deployment
-Global CDN
-HTTPS enabled
-Backend Deployment
-Render
-
-Configuration:
-
-Root Directory: backend
-
-Runtime: Python
-
-Build:
-pip install -r requirements.txt
-
-Start:
-uvicorn main:app --host 0.0.0.0 --port $PORT
-Firebase Setup
-
-Services used:
-
-Authentication
-Firestore Database
-Storage
-Security Rules
-🔥 Performance Optimizations
-
-Implemented:
-
-Client-side processing
-Asset caching
-Service workers
-Lazy loading
-Browser-based compression
-Optimized UI rendering
-
-Future improvements:
-
-Web Workers
-Code splitting
-Vite-based build system
-Advanced asset optimization
-💰 Business Model
-
-Ziphay follows a SaaS model.
-
-Free Plan
-Essential compression tools
-Basic file optimization
-Limited usage
-Pro Plan
-Advanced AI enhancement
-Premium processing tools
-Higher limits
-Advanced features
-🔮 Future Roadmap
-Phase 1
-Production security hardening
-Advanced CSP policies
-Better monitoring
-Automated testing
-Phase 2
-Stripe payment integration
-Server-side subscription verification
-API keys for developers
-Phase 3
-AI super-resolution models
-Audio compression
-Browser extensions
-Figma & VS Code plugins
-Phase 4
-Team workspaces
-Enterprise plans
-Analytics dashboard
-Blockchain ownership verification
-🔒 Security Notice
-
-Ziphay is under active development.
-
-Future production improvements include:
-
-Stronger CSP policies
-Advanced upload validation
-Backend authentication middleware
-Rate limiting improvements
-App Check enforcement
-Automated security monitoring
-🤝 Contributing
-
-Contributions, suggestions, and feedback are welcome.
-
-Fork the repository
-Create a feature branch
-Make your changes
-Submit a pull request
-📄 License
-
-This project is licensed under the MIT License.
-
-👨‍💻 Developer
-
-Abhay Donde
-
-Computer Engineering Student | AI Builder | Startup Founder | Aspiring Filmmaker
-
-⭐ Support Ziphay
-
-If you like this project, consider giving it a Star ⭐ on GitHub and follow the development journey of Ziphay AI.
-
-Ziphay AI — The Future of Intelligent File Optimization.
+Generate SHA-256 Hash
+      │
+      ▼
+Create Ownership Proof
+      │
+      ▼
+Store on Blockchain
+      │
+      ▼
+Verify Authenticity Anytime
