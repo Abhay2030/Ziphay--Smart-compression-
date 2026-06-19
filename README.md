@@ -247,5 +247,111 @@ Create Ownership Proof
       ▼
 Store on Blockchain
       │
+
+
+
+
+💰 Business Model
+
+Ziphay AI follows a freemium SaaS model.
+
+Free Plan
+Basic Compression Tools
+Standard Optimization
+Limited Processing
+Community Support
+Pro Plan
+AI Enhancement Tools
+Premium Processing
+Higher Usage Limits
+Advanced Features
+Priority Support
+Enterprise Plan (Future)
+Team Workspaces
+Analytics Dashboard
+API Access
+Dedicated Support
+SLA Guarantees
+🔮 Future Roadmap
+Phase 1
+Production Security Hardening
+Automated Testing
+Monitoring Infrastructure
+Advanced CSP Policies
+Phase 2
+Stripe Integration
+Subscription Management
+Developer API
+Usage Analytics
+Phase 3
+AI Super Resolution
+Audio Compression
+Browser Extensions
+VS Code Plugin
+Figma Plugin
+Phase 4
+Team Collaboration
+Enterprise Solutions
+Analytics Dashboard
+Blockchain Ownership Verification
+🔒 Security Notice
+
+Ziphay AI is actively under development.
+
+Planned improvements include:
+
+Advanced CSP Policies
+Enhanced Upload Validation
+Backend Authentication Middleware
+Rate Limiting
+Firebase App Check
+Security Monitoring
+Threat Detection
+🤝 Contributing
+
+Contributions are welcome.
+
+Steps
+Fork the repository
+Create a new branch
+git checkout -b feature-name
+Commit changes
+git commit -m "Add new feature"
+Push changes
+git push origin feature-name
+Create Pull Request
+📄 License
+
+Licensed under the MIT License.
+
+See the LICENSE file for details.
+
+👨‍💻 Developer
+Abhay Donde
+
+Computer Engineering Student
+AI Builder
+Startup Founder
+Aspiring Filmmaker
+
+Building intelligent products that combine technology, creativity, and real-world impact.
+
+⭐ Support Ziphay AI
+
+If you find this project valuable:
+
+⭐ Star the repository
+🍴 Fork the project
+🐛 Report issues
+💡 Suggest features
+🚀 Share with others
+<div align="center">
+🚀 Ziphay AI
+The Future of Intelligent File Optimization
+
+Privacy First • AI Powered • Browser Native
+
+Made with passion by Abhay Donde
+
       ▼
 Verify Authenticity Anytime
