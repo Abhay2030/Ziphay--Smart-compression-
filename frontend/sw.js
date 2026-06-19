@@ -75,7 +75,7 @@ self.addEventListener('fetch', event => {
         event.respondWith(
             fetch(event.request).catch(() => {
                 return new Response(
-                    '<html><body><h1>Offline</h1><p>Dashboard requires an internet connection.</p><a href="/">Go Home</a></body></html>',
+                    '<html><body><h1>Offline</h1><p>Dashboard requires an internet connection.</p><a href="index.html">Go Home</a></body></html>',
                     { headers: { 'Content-Type': 'text/html' }, status: 503 }
                 );
             })
@@ -144,4 +144,5 @@ self.addEventListener('fetch', event => {
         })
     );
 });
+
 

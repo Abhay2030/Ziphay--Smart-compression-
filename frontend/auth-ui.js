@@ -293,8 +293,8 @@ function buildModalHTML() {
         </p>
         <p class="zp-tos">
           By signing up you agree to our
-          <a href="/terms">Terms</a> &amp;
-          <a href="/privacy">Privacy Policy</a>.
+          <a href="terms.html">Terms</a> &amp;
+          <a href="privacy.html">Privacy Policy</a>.
         </p>
       </div>
 
@@ -591,3 +591,4 @@ window.ZiphayAuthUI = {
   close: closeModal,
   showToast,
 };
+

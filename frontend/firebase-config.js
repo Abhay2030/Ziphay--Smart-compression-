@@ -74,3 +74,4 @@ console.log(
   '%c[Ziphay] Firebase config loaded ✓',
   'background:#00d4aa;color:#07070f;padding:2px 8px;border-radius:4px;font-weight:bold'
 );
+

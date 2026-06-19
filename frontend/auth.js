@@ -262,3 +262,4 @@ window.ZiphayAuth = Object.freeze({
   saveRecord, getHistory, getStats, deleteRecord,
   currentUser, onLogin, onLogout, getUserProfile, upgradeToPro
 });
+
