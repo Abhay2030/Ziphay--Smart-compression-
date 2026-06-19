@@ -24,7 +24,7 @@ document.getElementById('cmpUploadBtn2')?.addEventListener('click', _scrollTop);
 document.getElementById('shortcutCloseBtn')?.addEventListener('click', () => {
     if (typeof closeShortcutModal === 'function') closeShortcutModal();
 });
-document.getElementById('converterLink')?.addEventListener('click', () => window.location.href = 'converter.html');
+document.getElementById('converterLink')?.addEventListener('click', () => window.location.href = '/converter');
 
 /* Mode tabs — Compress / Upscale / Denoise / BG Remove */
 document.querySelectorAll('.mode-tab[data-mode]').forEach(tab => {
@@ -59,3 +59,4 @@ document.getElementById('mnavLogout')?.addEventListener('click', () => {
     if (window.ZiphayAuth) ZiphayAuth.logOut();
     if (typeof closeMobileNav === 'function') closeMobileNav();
 });
+

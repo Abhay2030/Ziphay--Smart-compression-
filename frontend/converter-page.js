@@ -370,3 +370,4 @@ document.querySelectorAll('.cat-tab').forEach(tab => {
     setTimeout(() => ripple.remove(), 500);
   });
 });
+

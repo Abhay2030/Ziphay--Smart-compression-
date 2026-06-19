@@ -293,8 +293,8 @@ function buildModalHTML() {
         </p>
         <p class="zp-tos">
           By signing up you agree to our
-          <a href="terms.html">Terms</a> &amp;
-          <a href="privacy.html">Privacy Policy</a>.
+          <a href="/terms">Terms</a> &amp;
+          <a href="/privacy">Privacy Policy</a>.
         </p>
       </div>
 
@@ -567,7 +567,7 @@ function wireNavButtons() {
   }
 
   // Any other buttons on the page that trigger auth
-  // (e.g. auth-gate buttons on dashboard.html)
+  // (e.g. auth-gate buttons on /dashboard)
   document.querySelectorAll('[data-zp-open]').forEach(el => {
     el.addEventListener('click', () => openModal(el.dataset.zpOpen || 'login'));
   });

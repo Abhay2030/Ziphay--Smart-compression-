@@ -2,14 +2,14 @@
    Ziphay — Service Worker (Security Hardened)
    Cache-first for static assets, network-first for HTML
    Enables offline use for core compression tools
-   ⚠️ dashboard.html EXCLUDED from cache (M6 fix)
+   ⚠️ /dashboard EXCLUDED from cache (M6 fix)
 ═══════════════════════════════════════════════════ */
 
 const CACHE_NAME = 'ziphay-v7';
 const STATIC_ASSETS = [
     '/',
-    '/index.html',
-    '/tools.html',
+    '//',
+    '//tools',
     '/style.css',
     '/script.js',
     '/animations.js',
@@ -22,7 +22,7 @@ const STATIC_ASSETS = [
 
 /* SECURITY: Pages that should NEVER be cached (contain authenticated content) */
 const NO_CACHE_PAGES = [
-    '/dashboard.html',
+    '//dashboard',
     '/dashboard',
 ];
 
@@ -117,7 +117,7 @@ self.addEventListener('fetch', event => {
                     }
                     return response;
                 })
-                .catch(() => caches.match(event.request) || caches.match('/index.html'))
+                .catch(() => caches.match(event.request) || caches.match('//'))
         );
         return;
     }
@@ -144,3 +144,4 @@ self.addEventListener('fetch', event => {
         })
     );
 });
+

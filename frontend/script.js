@@ -1695,3 +1695,4 @@ if (typeof Object.freeze === 'function') {
     /* Freeze ENHANCE_MODES */
     Object.freeze(ENHANCE_MODES);
 }
+

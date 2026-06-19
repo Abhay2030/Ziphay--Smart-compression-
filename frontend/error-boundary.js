@@ -104,3 +104,4 @@
     'background:#f59e0b;color:#1a0f00;padding:2px 8px;border-radius:4px;font-weight:bold'
   );
 })();
+
