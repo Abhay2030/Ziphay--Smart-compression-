@@ -17,6 +17,20 @@ const CARDS = {
   'to-webm':  { type:'to-webm',  multi:false },
   'to-gif':   { type:'to-gif',   multi:false },
   'to-mp3':   { type:'to-mp3',   multi:false },
+  /* ── Audio Studio cards ── */
+  'aud-convert':  { type:'aud-convert',  multi:true  },
+  'aud-compress': { type:'aud-compress', multi:false },
+  'aud-trim':     { type:'aud-trim',     multi:false },
+  'aud-merge':    { type:'aud-merge',    multi:true  },
+  'aud-split':    { type:'aud-split',    multi:false },
+  'aud-extract':  { type:'aud-extract',  multi:false },
+  'aud-denoise':  { type:'aud-denoise',  multi:false },
+  'aud-enhance':  { type:'aud-enhance',  multi:false },
+  'aud-silence':  { type:'aud-silence',  multi:false },
+  'aud-podcast':  { type:'aud-podcast',  multi:false },
+  'aud-music':    { type:'aud-music',    multi:false },
+  'aud-meta':     { type:'aud-meta',     multi:false },
+  'aud-presets':  { type:'aud-presets',  multi:false },
 };
 
 const state = {};  // cardId → { files: [] }
@@ -190,6 +204,7 @@ async function runConvert(id) {
   setProgress(id, 10, 'Starting…');
 
   try {
+    const startTime = performance.now();
     let results;
 
     /* ── Image conversions ── */
@@ -275,8 +290,113 @@ async function runConvert(id) {
       )];
     }
 
+    /* ════ AUDIO STUDIO TOOLS ════ */
+    else if (id === 'aud-convert') {
+      const fmt = document.getElementById('fmt-aud-convert').value;
+      const br  = document.getElementById('q-aud-convert').value;
+      setProgress(id, 5, 'Loading FFmpeg…');
+      results = [];
+      for (let i = 0; i < files.length; i++) {
+        setProgress(id, Math.round(5 + (i/files.length)*90), `Converting ${i+1}/${files.length}…`);
+        results.push(await ZiphayAudio.convertAudio(files[i], fmt, br));
+      }
+    }
+    else if (id === 'aud-compress') {
+      const mode = document.getElementById('mode-aud-compress').value;
+      setProgress(id, 5, 'Loading FFmpeg…');
+      results = [await ZiphayAudio.compressAudio(files[0], mode, pct => setProgress(id, 5 + pct*0.9, `Compressing… ${pct}%`))];
+    }
+    else if (id === 'aud-trim') {
+      const start = parseFloat(document.getElementById('start-aud-trim').value) || 0;
+      const end   = parseFloat(document.getElementById('end-aud-trim').value) || 0;
+      setProgress(id, 5, 'Loading FFmpeg…');
+      results = [await ZiphayAudio.trimAudio(files[0], start, end, pct => setProgress(id, 5 + pct*0.9, `Trimming… ${pct}%`))];
+    }
+    else if (id === 'aud-merge') {
+      setProgress(id, 5, 'Loading FFmpeg…');
+      results = [await ZiphayAudio.mergeAudio(files, pct => setProgress(id, 5 + pct*0.9, `Merging… ${pct}%`))];
+    }
+    else if (id === 'aud-split') {
+      const splitAt = parseFloat(document.getElementById('time-aud-split').value) || 30;
+      setProgress(id, 5, 'Loading FFmpeg…');
+      results = await ZiphayAudio.splitAudio(files[0], splitAt, pct => setProgress(id, 5 + pct*0.9, `Splitting… ${pct}%`));
+    }
+    else if (id === 'aud-extract') {
+      const fmt = document.getElementById('fmt-aud-extract').value;
+      setProgress(id, 5, 'Loading FFmpeg…');
+      results = [await ZiphayAudio.extractAudioFromVideo(files[0], fmt, pct => setProgress(id, 5 + pct*0.9, `Extracting… ${pct}%`))];
+    }
+    else if (id === 'aud-denoise') {
+      setProgress(id, 5, 'Analyzing noise profile…');
+      results = [await ZiphayAudio.denoiseAudio(files[0], pct => setProgress(id, 5 + pct*0.9, `Denoising… ${pct}%`))];
+    }
+    else if (id === 'aud-enhance') {
+      setProgress(id, 5, 'Processing voice…');
+      results = [await ZiphayAudio.enhanceVoice(files[0], pct => setProgress(id, 5 + pct*0.9, `Enhancing… ${pct}%`))];
+    }
+    else if (id === 'aud-silence') {
+      setProgress(id, 5, 'Scanning for silence…');
+      results = [await ZiphayAudio.removeSilence(files[0], -40, pct => setProgress(id, 5 + pct*0.9, `Removing silence… ${pct}%`))];
+    }
+    else if (id === 'aud-podcast') {
+      setProgress(id, 5, 'Optimizing podcast…');
+      results = [await ZiphayAudio.optimizePodcast(files[0], pct => setProgress(id, 5 + pct*0.9, `Optimizing… ${pct}%`))];
+    }
+    else if (id === 'aud-music') {
+      setProgress(id, 10, 'Analyzing BPM & Key…');
+      const analysis = await ZiphayAudio.analyzeBPM(files[0]);
+      document.getElementById('bpm-val').textContent = analysis.bpm;
+      document.getElementById('key-val').textContent = analysis.key;
+      document.getElementById('dur-val').textContent = analysis.duration.toFixed(1) + 's';
+      setProgress(id, 100, 'Analysis complete!');
+      setTimeout(() => { hideProgress(id); btn.disabled = false; }, 400);
+      return; /* No download for analysis */
+    }
+    else if (id === 'aud-meta') {
+      const meta = {
+        title:  document.getElementById('meta-title').value,
+        artist: document.getElementById('meta-artist').value,
+        album:  document.getElementById('meta-album').value,
+        year:   document.getElementById('meta-year').value,
+      };
+      setProgress(id, 5, 'Loading FFmpeg…');
+      results = [await ZiphayAudio.editMetadata(files[0], meta, pct => setProgress(id, 5 + pct*0.9, `Writing tags… ${pct}%`))];
+    }
+    else if (id === 'aud-presets') {
+      const preset = document.getElementById('preset-aud-presets').value;
+      setProgress(id, 5, 'Loading FFmpeg…');
+      results = [await ZiphayAudio.exportPreset(files[0], preset, pct => setProgress(id, 5 + pct*0.9, `Exporting… ${pct}%`))];
+    }
+
     setProgress(id, 100, 'Done!');
-    setTimeout(() => { hideProgress(id); showResult(id, results); btn.disabled = false; }, 400);
+    const endTime = performance.now();
+    setTimeout(() => { 
+      hideProgress(id); 
+      showResult(id, results); 
+      btn.disabled = false; 
+      
+      // Update Audio Analytics Panel if this is an audio tool
+      if (document.getElementById('card-' + id)?.dataset.cat === 'audio' && document.getElementById('ap-orig')) {
+        const arr = Array.isArray(results) ? results : [results];
+        const totalOrig = arr.reduce((s,r) => s + (r.origSize||0), 0);
+        const totalNew = arr.reduce((s,r) => s + (r.newSize||0), 0);
+        
+        document.getElementById('ap-orig').textContent = totalOrig ? ZiphayConverter.fmtBytes(totalOrig) : '--';
+        document.getElementById('ap-opt').textContent = totalNew ? ZiphayConverter.fmtBytes(totalNew) : '--';
+        
+        if (totalOrig && totalNew && totalOrig > totalNew) {
+          const ratio = Math.round((1 - (totalNew / totalOrig)) * 100);
+          document.getElementById('ap-ratio').textContent = ratio + '%';
+          document.getElementById('ap-saved').textContent = ZiphayConverter.fmtBytes(totalOrig - totalNew);
+        } else {
+          document.getElementById('ap-ratio').textContent = '--';
+          document.getElementById('ap-saved').textContent = '--';
+        }
+        
+        document.getElementById('ap-dur').textContent = arr.length;
+        document.getElementById('ap-speed').textContent = ((endTime - startTime) / 1000).toFixed(1) + 's';
+      }
+    }, 400);
 
   } catch (err) {
     console.error('[Ziphay Converter]', err);
@@ -290,9 +410,27 @@ document.querySelectorAll('.cat-tab').forEach(btn => {
     document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const cat = btn.dataset.cat;
+    
+    // Toggle standard cards
     document.querySelectorAll('.conv-card').forEach(c => {
-      c.classList.toggle('hidden', cat !== 'all' && c.dataset.cat !== cat);
+      const isAudioCard = c.dataset.cat === 'audio';
+      const isHidden = (cat !== 'all' && c.dataset.cat !== cat) || (cat === 'all' && isAudioCard);
+      c.classList.toggle('hidden', isHidden);
+      
+      // Remove inline style if present (from initial load)
+      c.style.display = ''; 
     });
+    
+    // Toggle Audio Studio specific header/footer
+    const audHeader = document.getElementById('audioHeader');
+    const audFooter = document.getElementById('audioFooter');
+    if (audHeader) audHeader.style.display = (cat === 'audio') ? 'block' : 'none';
+    if (audFooter) audFooter.style.display = (cat === 'audio') ? 'block' : 'none';
+    
+    // Re-trigger 3D tilt attach if elements were hidden
+    if (cat === 'audio') {
+       window.dispatchEvent(new Event('resize'));
+    }
   });
 });
 
