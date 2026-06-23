@@ -434,6 +434,14 @@ document.querySelectorAll('.cat-tab').forEach(btn => {
   });
 });
 
+/* Check for ?tab=xyz in URL and auto-select */
+const urlParams = new URLSearchParams(window.location.search);
+const activeTab = urlParams.get('tab');
+if (activeTab) {
+  const tabBtn = document.querySelector(`.cat-tab[data-cat="${activeTab}"]`);
+  if (tabBtn) tabBtn.click();
+}
+
 /* ── Theme toggle ── */
 document.getElementById('themeBtn').addEventListener('click', function () {
   const h = document.documentElement, d = h.getAttribute('data-theme') === 'dark';
