@@ -499,21 +499,25 @@
           <p class="mini-drop-sub">MP3 · WAV · FLAC · AAC · OGG · M4A</p>
           <div class="file-chip-list" id="chips-aud-convert"></div>
         </div>
-        <div class="conv-opts">
-          <label>Output:</label>
-          <select class="conv-select" id="fmt-aud-convert">
-            <option value="mp3">MP3</option>
-            <option value="wav">WAV</option>
-            <option value="aac">AAC</option>
-            <option value="ogg">OGG</option>
-            <option value="flac">FLAC</option>
-          </select>
-          <label>Quality:</label>
-          <select class="conv-select" id="q-aud-convert">
-            <option value="320">320kbps</option>
-            <option value="192">192kbps</option>
-            <option value="128">128kbps</option>
-          </select>
+        <div class="conv-opts" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;align-items:start">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label>Output:</label>
+            <select class="conv-select" id="fmt-aud-convert" style="width:100%">
+              <option value="mp3">MP3</option>
+              <option value="wav">WAV</option>
+              <option value="aac">AAC</option>
+              <option value="ogg">OGG</option>
+              <option value="flac">FLAC</option>
+            </select>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label>Quality:</label>
+            <select class="conv-select" id="q-aud-convert" style="width:100%">
+              <option value="320">320kbps</option>
+              <option value="192">192kbps</option>
+              <option value="128">128kbps</option>
+            </select>
+          </div>
         </div>
         <div class="conv-progress" id="prog-aud-convert"><div class="cp-bar"><div class="cp-fill" style="width:0%"></div></div><div class="cp-label">Converting…</div></div>
         <button class="conv-btn" id="btn-aud-convert" disabled>Convert Audio</button>
@@ -527,12 +531,12 @@
         <p class="conv-desc">Reduce audio file size while preserving quality. View estimated storage saved instantly.</p>
         <div class="mini-drop" id="drop-aud-compress">
           <input type="file" id="input-aud-compress" accept="audio/*">
-          <div class="mini-drop-icon">🗜️</div>
+          <div class="mini-drop-icon">🔉</div>
           <p class="mini-drop-text"><span>Click</span> or drag audio file</p>
           <p class="mini-drop-sub">Drop files here</p>
           <div class="file-chip-list" id="chips-aud-compress"></div>
         </div>
-        <div class="conv-opts">
+        <div class="conv-opts" style="display:flex;flex-direction:column;gap:6px;width:100%;align-items:flex-start">
           <label>Mode:</label>
           <select class="conv-select" id="mode-aud-compress" style="width:100%">
             <option value="high">High Quality</option>
@@ -558,11 +562,15 @@
           <div class="file-chip-list" id="chips-aud-trim"></div>
         </div>
         <div class="audio-waveform"></div>
-        <div class="conv-opts">
-          <label>Start (sec):</label>
-          <input type="number" class="conv-select" id="start-aud-trim" value="0" min="0" step="0.1" style="width:70px">
-          <label>End (sec):</label>
-          <input type="number" class="conv-select" id="end-aud-trim" value="30" min="0" step="0.1" style="width:70px">
+        <div class="conv-opts" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;align-items:start">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label>Start (sec):</label>
+            <input type="number" class="conv-select" id="start-aud-trim" value="0" min="0" step="0.1" style="width:100%">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label>End (sec):</label>
+            <input type="number" class="conv-select" id="end-aud-trim" value="30" min="0" step="0.1" style="width:100%">
+          </div>
         </div>
         <div class="conv-progress" id="prog-aud-trim"><div class="cp-bar"><div class="cp-fill" style="width:0%"></div></div><div class="cp-label">Trimming…</div></div>
         <button class="conv-btn" id="btn-aud-trim" disabled>Trim Audio</button>
@@ -598,9 +606,9 @@
           <p class="mini-drop-sub">Drop files here</p>
           <div class="file-chip-list" id="chips-aud-split"></div>
         </div>
-        <div class="conv-opts">
+        <div class="conv-opts" style="display:flex;flex-direction:column;gap:6px;width:100%;align-items:flex-start">
           <label>Split at (sec):</label>
-          <input type="number" class="conv-select" id="time-aud-split" value="30" min="1" step="1" style="width:80px">
+          <input type="number" class="conv-select" id="time-aud-split" value="30" min="1" step="1" style="width:100%">
         </div>
         <div class="conv-progress" id="prog-aud-split"><div class="cp-bar"><div class="cp-fill" style="width:0%"></div></div><div class="cp-label">Splitting…</div></div>
         <button class="conv-btn" id="btn-aud-split" disabled>Split Audio</button>
