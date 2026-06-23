@@ -287,11 +287,9 @@ async function getFFmpeg(onLog) {
   if (onLog) _ffmpeg.on('log', ({ message }) => onLog(message));
 
   const baseURL = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/umd';
-  const ffmpegURL = 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd';
   await _ffmpeg.load({
     coreURL:   await toBlobURL(`${baseURL}/ffmpeg-core.js`,   'text/javascript'),
     wasmURL:   await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
-    classWorkerURL: await toBlobURL(`${ffmpegURL}/814.ffmpeg.js`, 'text/javascript'),
   });
 
   return _ffmpeg;
