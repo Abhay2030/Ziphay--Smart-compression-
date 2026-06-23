@@ -483,3 +483,157 @@ body::after {
   }
   .scroll-reveal { opacity:1 !important; transform:none !important; filter:none !important; }
 }
+
+/* ═══════════════════════════════════════════════
+   COMMUNITY PARTNER — About Page
+   ═══════════════════════════════════════════════ */
+
+.partner-section {
+  margin-top: 8px;
+}
+
+.partner-card {
+  background: linear-gradient(135deg, rgba(0,212,170,.05), rgba(139,92,246,.03));
+  border: 1px solid rgba(0,212,170,.18);
+  border-radius: var(--r2);
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.partner-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal), var(--purple), transparent);
+  opacity: 0.6;
+}
+
+.partner-card:hover {
+  border-color: rgba(0,212,170,.3);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,212,170,.08);
+}
+
+.partner-card-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.partner-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #0a1628, #0d1f3c);
+  box-shadow: 0 0 0 1px rgba(0,212,170,.12), 0 0 20px rgba(0,212,170,.1);
+}
+
+.partner-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.partner-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.partner-role-badge {
+  display: inline-flex;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  background: rgba(0,212,170,.08);
+  color: var(--teal);
+  border: 1px solid rgba(0,212,170,.18);
+}
+
+.partner-desc {
+  color: var(--muted);
+  font-size: .84rem;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.partner-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.partner-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 11px;
+  border-radius: 100px;
+  font-size: .7rem;
+  font-weight: 600;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  transition: .2s;
+}
+
+.partner-tag:hover {
+  border-color: rgba(0,212,170,.2);
+  color: var(--teal);
+}
+
+.partner-quote {
+  border-left: 3px solid var(--teal);
+  padding: 10px 16px;
+  background: var(--card);
+  border-radius: 0 var(--r) var(--r) 0;
+  color: var(--muted);
+  font-size: .82rem;
+  font-style: italic;
+  line-height: 1.65;
+  margin-top: 14px;
+}
+
+/* Founder identity tags */
+.founder-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.founder-role {
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: .72rem;
+  font-weight: 600;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  transition: .2s;
+}
+
+.founder-role:hover {
+  border-color: rgba(139,92,246,.2);
+  color: var(--purple);
+}
+
+.founder-role.primary {
+  background: rgba(0,212,170,.08);
+  border-color: rgba(0,212,170,.2);
+  color: var(--teal);
+}
+
+@media (max-width: 540px) {
+  .partner-card { padding: 20px; }
+  .partner-card-head { flex-direction: column; align-items: flex-start; }
+}
