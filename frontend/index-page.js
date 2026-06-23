@@ -24,8 +24,8 @@ document.getElementById('cmpUploadBtn2')?.addEventListener('click', _scrollTop);
 document.getElementById('shortcutCloseBtn')?.addEventListener('click', () => {
     if (typeof closeShortcutModal === 'function') closeShortcutModal();
 });
-document.getElementById('converterLink')?.addEventListener('click', () => window.location.href = '/converter');
-document.getElementById('audioStudioLink')?.addEventListener('click', () => window.location.href = '/converter?tab=audio');
+document.getElementById('converterLink')?.addEventListener('click', () => window.location.href = '/converter.html');
+document.getElementById('audioStudioLink')?.addEventListener('click', () => window.location.href = '/converter.html?tab=audio');
 
 /* Mode tabs — Compress / Upscale / Denoise / BG Remove */
 document.querySelectorAll('.mode-tab[data-mode]').forEach(tab => {
