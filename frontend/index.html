@@ -752,67 +752,92 @@
     </section>
 
     <!-- ═══════════════ COMMUNITY PARTNER ═══════════════ -->
-    <style>
-      .community-mini-card {
-          background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
-          border: 1px solid var(--border);
-          border-radius: 20px;
-          padding: 30px;
-          display: flex;
-          align-items: center;
-          gap: 24px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-          transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
-          max-width: 800px;
-          margin: 0 auto;
-      }
-      .community-mini-card:hover {
-          transform: translateY(-2px);
-          border-color: rgba(0,212,170,0.3);
-          box-shadow: 0 14px 40px rgba(0,212,170,0.08);
-      }
-      .cmc-logo {
-          width: 64px; height: 64px; border-radius: 16px;
-          background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08);
-          overflow: hidden; flex-shrink: 0;
-      }
-      .cmc-logo img { width: 100%; height: 100%; object-fit: cover; }
-      .cmc-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-      .cmc-title-row h3 { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; margin: 0; }
-      .cmc-badge {
-          font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-          background: rgba(0,212,170,0.1); color: var(--teal); padding: 3px 10px;
-          border-radius: 100px; border: 1px solid rgba(0,212,170,0.2);
-      }
-      .cmc-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.6; margin: 0 0 12px; }
-      .cmc-link {
-          font-size: 0.8rem; font-weight: 600; color: var(--teal);
-          text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: 0.2s;
-      }
-      .cmc-link:hover { text-shadow: 0 0 10px rgba(0,212,170,0.4); text-decoration: none; }
-      @media(max-width: 600px) {
-          .community-mini-card { flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; }
-      }
-    </style>
-    <section id="community" style="padding: 40px 24px 60px;">
-        <div class="community-mini-card scroll-reveal">
-            <div class="cmc-logo">
-                <img src="grid-logo.png" alt="GRID Logo" loading="lazy">
+    <section id="community">
+        <div class="wrap">
+            <div class="community-header">
+                <span class="section-tag">Community Partner</span>
+                <h2 class="section-title">Backed by a thriving<br><em style="font-style:normal;color:var(--teal)">tech community.</em></h2>
+                <p class="section-sub" style="margin:0 auto">Ziphay AI is proud to collaborate with GRID — a dynamic Machine Learning and Technology Community that supports learning, innovation, and community-driven development.</p>
             </div>
-            <div style="flex-grow: 1;">
-                <div class="cmc-title-row">
-                    <h3>GRID</h3>
-                    <span class="cmc-badge">Community Partner</span>
+
+            <div class="community-card">
+                <div class="community-logo-row">
+                    <div class="community-logo">
+                        <img src="grid-logo.png" alt="GRID Community Logo" loading="lazy">
+                    </div>
+                    <div class="community-logo-text">
+                        <h3>GRID Community</h3>
+                        <span class="community-role">Technology Community Partner</span>
+                    </div>
                 </div>
-                <p class="cmc-desc">
-                    Ziphay AI is an independent product founded by <strong>Abhay Sachin Donde</strong>. 
-                    We proudly collaborate with GRID as our technology community partner to foster learning, networking, and innovation.
-                </p>
-                <div style="display: flex; gap: 12px;">
-                    <a href="https://chat.whatsapp.com/Gy5MEE62EJ11IUlBr59bYo" target="_blank" rel="noopener noreferrer" class="cmc-link">
-                        🔗 Join GRID Community →
-                    </a>
+
+                <p class="community-desc">Ziphay AI proudly collaborates with GRID Community, an independent Machine Learning and Technology community founded by <strong style="color:var(--purple)">Krishna Raj Barnwal</strong>. GRID supports innovation, learning, technical collaboration, mentorship, and community-driven growth. Community feedback and testing insights from GRID members help Ziphay AI improve product quality and user experience.</p>
+
+                <div class="community-founder-info">
+                    <div class="community-founder-avatar">👤</div>
+                    <div class="community-founder-text">
+                        <strong>Krishna Raj Barnwal</strong><br>
+                        <span class="cft-role">Founder &amp; Community Lead of GRID</span><br>
+                        ML Enthusiast · Developer · Community Builder · Technology Educator
+                    </div>
                 </div>
+
+                <div class="community-highlights">
+                    <span class="community-highlight-tag">☁️ Cloud Learning</span>
+                    <span class="community-highlight-tag">🧠 ML &amp; AI</span>
+                    <span class="community-highlight-tag">🧑‍💻 Hackathons</span>
+                    <span class="community-highlight-tag">📚 Workshops</span>
+                    <span class="community-highlight-tag">🔗 Networking</span>
+                    <span class="community-highlight-tag">📜 Certifications</span>
+                    <span class="community-highlight-tag">🚀 Startup Showcases</span>
+                    <span class="community-highlight-tag">🤝 Mentorship</span>
+                    <span class="community-highlight-tag">📈 Career Growth</span>
+                    <span class="community-highlight-tag">🎁 Community Events</span>
+                </div>
+
+                <div class="community-benefits-title">Partnership Benefits</div>
+                <div class="community-benefits">
+                    <div class="benefit-item"><span class="benefit-check">✓</span> Product Feedback</div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span> Early Testing</div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span> Community Validation</div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span> Technical Networking</div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span> Learning Opportunities</div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span> Event Participation</div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span> Mentorship Access</div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span> Innovation Support</div>
+                </div>
+
+                <div class="community-actions">
+                    <a href="https://chat.whatsapp.com/Gy5MEE62EJ11IUlBr59bYo" target="_blank" rel="noopener noreferrer" class="community-cta" id="gridLearnMore">🔗 Join GRID Community</a>
+                    <a href="about.html#community-partners" class="community-cta-outline" id="gridAboutBtn">ℹ️ Learn More</a>
+                </div>
+            </div>
+
+            <!-- Founders dual-card -->
+            <div class="founders-grid">
+                <div class="founder-card fc-ziphay">
+                    <div class="founder-card-label">Founder of Ziphay AI</div>
+                    <div class="founder-card-avatar">👨‍💻</div>
+                    <div class="founder-card-name">Abhay Sachin Donde</div>
+                    <div class="founder-card-role"><strong>Founder &amp; Builder</strong> of Ziphay AI<br>Computer Engineering Student · AI Enthusiast · Startup Founder</div>
+                    <div class="founder-card-entity">⚡ Independent Product</div>
+                </div>
+                <div class="founder-card fc-grid">
+                    <div class="founder-card-label">Community Partner Founder</div>
+                    <div class="founder-card-avatar">👤</div>
+                    <div class="founder-card-name">Krishna Raj Barnwal</div>
+                    <div class="founder-card-role"><strong>Founder &amp; Community Lead</strong> of GRID<br>ML Enthusiast · Developer · Community Builder</div>
+                    <div class="founder-card-entity">🔗 Independent Community</div>
+                </div>
+            </div>
+
+            <div class="founder-strip">
+                <span class="founder-dot"></span>
+                <span>Founded &amp; Built by <strong>Abhay Sachin Donde</strong></span>
+                <span class="founder-dot"></span>
+                <span>Independent Founder-Led Product</span>
+                <span class="founder-dot"></span>
+                <span>Community Partner: <strong style="color:var(--teal)">GRID</strong></span>
             </div>
         </div>
     </section>
