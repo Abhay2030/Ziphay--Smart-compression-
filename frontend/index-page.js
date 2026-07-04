@@ -30,7 +30,7 @@ document.getElementById('audioStudioLink')?.addEventListener('click', () => wind
 /* Mode tabs — Compress / Upscale / Denoise / BG Remove */
 document.querySelectorAll('.mode-tab[data-mode]').forEach(tab => {
     tab.addEventListener('click', () => {
-        if (typeof switchMode === 'function') switchMode(tab.dataset.mode);
+        if (typeof window.switchMode === 'function') window.switchMode(tab.dataset.mode);
     });
 });
 
@@ -42,19 +42,19 @@ document.getElementById('denoiseStrength')?.addEventListener('input', function (
 /* Tool cards — delegated via data attributes */
 document.querySelectorAll('.tool-card[data-tool-accept]').forEach(card => {
     card.addEventListener('click', () => {
-        if (typeof openTool === 'function') openTool(card.dataset.toolAccept, card.dataset.toolMode);
+        if (typeof window.openTool === 'function') window.openTool(card.dataset.toolAccept, card.dataset.toolMode);
     });
 });
 
 /* Mobile nav — close on anchor click + auth buttons */
 document.querySelectorAll('.mnav-anchor').forEach(a => {
     a.addEventListener('click', () => {
-        if (typeof closeMobileNav === 'function') closeMobileNav();
+        if (typeof window.closeMobileNav === 'function') window.closeMobileNav();
     });
 });
 document.getElementById('mnavLogin')?.addEventListener('click', () => {
     if (window.ZiphayAuthUI) ZiphayAuthUI.open('login');
-    if (typeof closeMobileNav === 'function') closeMobileNav();
+    if (typeof window.closeMobileNav === 'function') window.closeMobileNav();
 });
 document.getElementById('mnavLogout')?.addEventListener('click', () => {
     if (window.ZiphayAuth) ZiphayAuth.logOut();
