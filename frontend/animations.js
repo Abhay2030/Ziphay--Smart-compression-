@@ -81,30 +81,45 @@
             }
         }
 
-        function initParticles() {
-            resizeCanvas();
-            const count = Math.min(Math.floor(w * h / 18000), 80);
-            particles = Array.from({ length: count }, () => {
-                const p = new Particle();
-                p.y = Math.random() * h; // Scatter initially
-                p.life = Math.random() * p.maxLife;
-                return p;
-            });
+    function initParticles() {
+        if (!window.matchMedia('(pointer: fine)').matches || window.innerWidth < 768) {
+            // Disabled on mobile/touch to save battery & CPU
+            canvas.style.display = 'none';
+            return;
         }
+        resizeCanvas();
+        const count = Math.min(Math.floor(w * h / 18000), 80);
+        particles = Array.from({ length: count }, () => {
+            const p = new Particle();
+            p.y = Math.random() * h; // Scatter initially
+            p.life = Math.random() * p.maxLife;
+            return p;
+        });
+    }
 
-        function animateParticles() {
-            ctx.clearRect(0, 0, w, h);
-            particles.forEach(p => { p.update(); p.draw(); });
-            animId = requestAnimationFrame(animateParticles);
-        }
+    function animateParticles() {
+        if (!particles.length) return;
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => { p.update(); p.draw(); });
+        animId = requestAnimationFrame(animateParticles);
+    }
 
+    if (window.matchMedia('(pointer: fine)').matches && window.innerWidth >= 768) {
         initParticles();
         animateParticles();
         window.addEventListener('resize', () => {
+            if (window.innerWidth < 768) {
+                cancelAnimationFrame(animId);
+                canvas.style.display = 'none';
+                particles = [];
+                return;
+            }
+            canvas.style.display = 'block';
             cancelAnimationFrame(animId);
             initParticles();
             animateParticles();
-        });
+        }, { passive: true });
+    }
     }
 
     /* ─────────────────────────────────────
@@ -260,6 +275,9 @@
        different scroll speeds
     ───────────────────────────────────── */
     let ticking = false;
+    // Skip parallax completely on small screens
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    
     const parallaxElements = [
         { sel: '.ab1', speed: 0.3 },
         { sel: '.ab2', speed: 0.2 },
@@ -273,7 +291,7 @@
     })).filter(p => p.el);
 
     function onParallaxScroll() {
-        if (ticking) return;
+        if (ticking || isMobile || pEls.length === 0) return;
         ticking = true;
         requestAnimationFrame(() => {
             const scrollY = window.scrollY;
@@ -285,7 +303,10 @@
             ticking = false;
         });
     }
-    window.addEventListener('scroll', onParallaxScroll, { passive: true });
+    
+    if (!isMobile) {
+        window.addEventListener('scroll', onParallaxScroll, { passive: true });
+    }
 
     /* ─────────────────────────────────────
        6. MAGNETIC HOVER ON BUTTONS
@@ -339,7 +360,7 @@
                 advancedRevealObs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: window.innerWidth < 768 ? 0.02 : 0.08, rootMargin: '0px 0px -40px 0px' });
 
     // Section titles — slide up + fade
     document.querySelectorAll('.section-tag, .section-title, .section-sub').forEach((el, i) => {

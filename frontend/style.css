@@ -113,14 +113,15 @@ button {
 .ab {
     position: absolute;
     border-radius: 50%;
-    filter: blur(120px);
-    opacity: .35;
+    filter: blur(80px); /* Reduced from 120px for mobile performance */
+    opacity: .25; /* Reduced slightly for cleaner look */
     transition: opacity 1s, filter 1s;
     mix-blend-mode: screen;
+    will-change: transform; /* Hardware acceleration */
 }
 
 [data-theme="light"] .ab {
-    opacity: .18;
+    opacity: .12; /* Reduced for light theme */
     mix-blend-mode: multiply;
 }
 
@@ -3425,6 +3426,7 @@ body.page-ready .trust-row { animation: heroEnter .8s .65s cubic-bezier(.16,1,.3
     opacity: 0;
     transform: translateY(40px);
     transition: none;
+    will-change: transform, opacity;
 }
 
 .anim-slide-up.anim-in {
@@ -3442,6 +3444,7 @@ body.page-ready .trust-row { animation: heroEnter .8s .65s cubic-bezier(.16,1,.3
     opacity: 0;
     transform: scale(0.9);
     transition: none;
+    will-change: transform, opacity;
 }
 
 .anim-fade-scale.anim-in {
@@ -3459,6 +3462,7 @@ body.page-ready .trust-row { animation: heroEnter .8s .65s cubic-bezier(.16,1,.3
     opacity: 0;
     transform: scale(0.8);
     transition: none;
+    will-change: transform, opacity;
 }
 
 .anim-count-pop.anim-in {
@@ -4632,3 +4636,21 @@ html {
 .community-logo, .partner-logo {
     border-radius: 4px !important;
 }}
+/* --- MOBILE TOUCH ENHANCEMENTS --- */
+button, .nav-cta, .import-btn, .plan-btn, .download-btn, .action-btn {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+button:active, .nav-cta:active, .import-btn:active, .plan-btn:active, .download-btn:active, .action-btn:active, a.pg-back-btn:active {
+    transform: scale(0.96) !important;
+}
+
+@media (max-width: 768px) {
+    button, .nav-cta, .import-btn, .plan-btn, .download-btn, .action-btn, select, input {
+        min-height: 44px; /* Minimum touch target size */
+    }
+    .dz-wrap {
+        min-height: 280px; /* Prevent layout shift */
+    }
+}
+
