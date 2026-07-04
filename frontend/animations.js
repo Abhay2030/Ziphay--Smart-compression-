@@ -98,7 +98,7 @@
     }
 
     function animateParticles() {
-        if (!particles.length) return;
+        if (!particles.length || window.innerWidth < 768) return;
         ctx.clearRect(0, 0, w, h);
         particles.forEach(p => { p.update(); p.draw(); });
         animId = requestAnimationFrame(animateParticles);
@@ -129,7 +129,7 @@
     const cursorDot = document.getElementById('cursorDot');
     const cursorRing = document.getElementById('cursorRing');
 
-    if (cursorDot && cursorRing && window.matchMedia('(pointer: fine)').matches) {
+    if (cursorDot && cursorRing && window.matchMedia('(pointer: fine)').matches && window.innerWidth >= 768) {
         let mouseX = -100, mouseY = -100;
         let dotX = -100, dotY = -100;
         let ringX = -100, ringY = -100;
@@ -142,6 +142,7 @@
         });
 
         function updateCursor() {
+            if (window.innerWidth < 768) return;
             if (cursorDirty) {
                 // Dot follows instantly (almost)
                 dotX += (mouseX - dotX) * 0.35;

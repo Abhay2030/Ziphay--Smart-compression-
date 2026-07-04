@@ -4679,3 +4679,15 @@ body { animation: pageLoadFade 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
     box-shadow: 0 10px 30px rgba(0,212,170,0.15);
 }
 
+/* ─── EXTREME MOBILE PERFORMANCE CULLING ─── */
+@media (max-width: 768px) {
+    .ab {
+        display: none !important;
+        animation: none !important;
+        filter: none !important;
+    }
+    * {
+        mix-blend-mode: normal !important;
+    }
+}
+
