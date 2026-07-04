@@ -13,24 +13,31 @@ Upgrade to PostgreSQL by changing SQLALCHEMY_DATABASE_URL
 
 from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, Index
 from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.pool import NullPool
 from datetime import datetime
 
 import os
 
+# Set your Supabase or Neon PostgreSQL URL here in Vercel Environment Variables
 SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./ziphay.db")
-# For PostgreSQL: "postgresql://user:password@localhost/ziphay"
 
 # Detect if using SQLite for connection args
 _is_sqlite = SQLALCHEMY_DATABASE_URL.startswith("sqlite")
 
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,
-    connect_args={"check_same_thread": False} if _is_sqlite else {},
-    # Limit pool size to prevent connection exhaustion
-    pool_size=5,
-    max_overflow=10,
-    pool_pre_ping=True,  # Verify connections before use
-)
+# Use NullPool for serverless environments (PostgreSQL) to prevent connection exhaustion
+# when thousands of ephemeral lambdas spin up and down.
+if _is_sqlite:
+    engine = create_engine(
+        SQLALCHEMY_DATABASE_URL,
+        connect_args={"check_same_thread": False},
+        pool_pre_ping=True,
+    )
+else:
+    engine = create_engine(
+        SQLALCHEMY_DATABASE_URL,
+        poolclass=NullPool,
+    )
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 

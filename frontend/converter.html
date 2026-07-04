@@ -856,6 +856,201 @@
       <div>
         <div style="font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px">Converters</div>
         <a href="#" style="display:block;color:var(--muted);text-decoration:none;font-size:.82rem;padding:4px 0;transition:.2s">Image Converter</a>
+        <p class="conv-desc">Optimize podcasts, interviews, and voiceovers. Boost speech clarity and loudness.</p>
+        <div class="mini-drop" id="drop-aud-enhance">
+          <input type="file" id="input-aud-enhance" accept="audio/*">
+          <div class="mini-drop-icon">🎙️</div>
+          <p class="mini-drop-text"><span>Click</span> or drag vocal track</p>
+          <p class="mini-drop-sub">Drop files here</p>
+          <div class="file-chip-list" id="chips-aud-enhance"></div>
+        </div>
+        <div class="conv-progress" id="prog-aud-enhance"><div class="cp-bar"><div class="cp-fill" style="width:0%"></div></div><div class="cp-label">Enhancing…</div></div>
+        <button class="conv-btn" id="btn-aud-enhance" style="background:linear-gradient(135deg,var(--purple),#6b21a8);color:#fff;border:none;box-shadow:0 0 20px rgba(139,92,246,0.3)" disabled>Enhance Voice</button>
+        <div class="conv-result" id="result-aud-enhance"></div>
+      </div>
+
+      <!-- AI Silence Remover -->
+      <div class="conv-card" data-cat="audio" id="card-aud-silence" style="display:none;">
+        <span class="conv-badge cb-audio" style="background:rgba(139,92,246,.1);color:var(--purple)">AI Tool</span>
+        <h3 class="conv-title">AI Silence Remover</h3>
+        <p class="conv-desc">Automatically detect and remove long pauses and dead air from podcasts and interviews.</p>
+        <div class="mini-drop" id="drop-aud-silence">
+          <input type="file" id="input-aud-silence" accept="audio/*">
+          <div class="mini-drop-icon">🤐</div>
+          <p class="mini-drop-text"><span>Click</span> or drag spoken audio</p>
+          <p class="mini-drop-sub">Drop files here</p>
+          <div class="file-chip-list" id="chips-aud-silence"></div>
+        </div>
+        <div class="conv-progress" id="prog-aud-silence"><div class="cp-bar"><div class="cp-fill" style="width:0%"></div></div><div class="cp-label">Scanning…</div></div>
+        <button class="conv-btn" id="btn-aud-silence" style="background:linear-gradient(135deg,var(--purple),#6b21a8);color:#fff;border:none;box-shadow:0 0 20px rgba(139,92,246,0.3)" disabled>Remove Silence</button>
+        <div class="conv-result" id="result-aud-silence"></div>
+      </div>
+
+      <!-- Podcast Optimizer -->
+      <div class="conv-card" data-cat="audio" id="card-aud-podcast" style="display:none;">
+        <span class="conv-badge cb-audio">Audio</span>
+        <h3 class="conv-title">Podcast Optimizer</h3>
+        <p class="conv-desc">One-click enhancement presets for volume normalization, noise reduction, and clarity.</p>
+        <div class="mini-drop" id="drop-aud-podcast">
+          <input type="file" id="input-aud-podcast" accept="audio/*">
+          <div class="mini-drop-icon">📻</div>
+          <p class="mini-drop-text"><span>Click</span> or drag podcast audio</p>
+          <p class="mini-drop-sub">Drop files here</p>
+          <div class="file-chip-list" id="chips-aud-podcast"></div>
+        </div>
+        <div class="conv-progress" id="prog-aud-podcast"><div class="cp-bar"><div class="cp-fill" style="width:0%"></div></div><div class="cp-label">Optimizing…</div></div>
+        <button class="conv-btn" id="btn-aud-podcast" disabled>Optimize Podcast</button>
+        <div class="conv-result" id="result-aud-podcast"></div>
+      </div>
+
+      <!-- Music Creator Tools -->
+      <div class="conv-card" data-cat="audio" id="card-aud-music" style="display:none;">
+        <span class="conv-badge cb-audio">Audio</span>
+        <h3 class="conv-title">Music Creator Tools</h3>
+        <p class="conv-desc">Detect BPM, Tempo, Beat Information, and Musical Key (Major/Minor Scale) instantly.</p>
+        <div class="mini-drop" id="drop-aud-music">
+          <input type="file" id="input-aud-music" accept="audio/*">
+          <div class="mini-drop-icon">🎹</div>
+          <p class="mini-drop-text"><span>Click</span> or drag music track</p>
+          <p class="mini-drop-sub">Drop files here</p>
+          <div class="file-chip-list" id="chips-aud-music"></div>
+        </div>
+        <div id="stats-aud-music" class="stats-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;font-size:0.75rem;color:var(--muted)">
+          <div style="background:var(--input-bg);padding:8px;border-radius:8px">BPM: <span id="bpm-val">--</span></div>
+          <div style="background:var(--input-bg);padding:8px;border-radius:8px">Key: <span id="key-val">--</span></div>
+          <div style="background:var(--input-bg);padding:8px;border-radius:8px">Dur: <span id="dur-val">--</span></div>
+        </div>
+        <div class="conv-progress" id="prog-aud-music"><div class="cp-bar"><div class="cp-fill" style="width:0%"></div></div><div class="cp-label">Analyzing…</div></div>
+        <button class="conv-btn" id="btn-aud-music" disabled>Analyze Track</button>
+        <div class="conv-result" id="result-aud-music"></div>
+      </div>
+
+      <!-- Audio Metadata Editor -->
+      <div class="conv-card" data-cat="audio" id="card-aud-meta" style="display:none;">
+        <span class="conv-badge cb-audio">Audio</span>
+        <h3 class="conv-title">Audio Metadata Editor</h3>
+        <p class="conv-desc">Edit Title, Artist, Album, Genre, Year, and Cover Art information embedded in the file.</p>
+        <div class="mini-drop" id="drop-aud-meta">
+          <input type="file" id="input-aud-meta" accept="audio/*">
+          <div class="mini-drop-icon">🏷️</div>
+          <p class="mini-drop-text"><span>Click</span> or drag audio file</p>
+          <p class="mini-drop-sub">Drop files here</p>
+          <div class="file-chip-list" id="chips-aud-meta"></div>
+        </div>
+        <div class="conv-opts" style="flex-direction:column;gap:6px">
+          <div style="display:flex;gap:6px;width:100%"><input class="conv-select" id="meta-title" placeholder="Title" style="flex:1"><input class="conv-select" id="meta-artist" placeholder="Artist" style="flex:1"></div>
+          <div style="display:flex;gap:6px;width:100%"><input class="conv-select" id="meta-album" placeholder="Album" style="flex:1"><input class="conv-select" id="meta-year" placeholder="Year" style="width:70px"></div>
+        </div>
+        <div class="conv-progress" id="prog-aud-meta"><div class="cp-bar"><div class="cp-fill" style="width:0%"></div></div><div class="cp-label">Writing tags…</div></div>
+        <button class="conv-btn" id="btn-aud-meta" disabled>Save Metadata</button>
+        <div class="conv-result" id="result-aud-meta"></div>
+      </div>
+
+      <!-- Creator Export Presets -->
+      <div class="conv-card" data-cat="audio" id="card-aud-presets" style="display:none;">
+        <span class="conv-badge cb-audio">Audio</span>
+        <h3 class="conv-title">Creator Export Presets</h3>
+        <p class="conv-desc">One-click export profiles for YouTube, Reels, Spotify Podcast, Apple Podcast, and Voiceover.</p>
+        <div class="mini-drop" id="drop-aud-presets">
+          <input type="file" id="input-aud-presets" accept="audio/*">
+          <div class="mini-drop-icon">🚀</div>
+          <p class="mini-drop-text"><span>Click</span> or drag audio</p>
+          <p class="mini-drop-sub">Drop files here</p>
+          <div class="file-chip-list" id="chips-aud-presets"></div>
+        </div>
+        <div class="conv-opts">
+          <label>Preset:</label>
+          <select class="conv-select" id="preset-aud-presets" style="width:100%">
+            <option value="youtube">YouTube</option>
+            <option value="spotify">Spotify Podcast</option>
+            <option value="apple">Apple Podcast</option>
+            <option value="reels">Instagram Reels</option>
+            <option value="voiceover">Voiceover</option>
+          </select>
+        </div>
+        <div class="conv-progress" id="prog-aud-presets"><div class="cp-bar"><div class="cp-fill" style="width:0%"></div></div><div class="cp-label">Exporting…</div></div>
+        <button class="conv-btn" id="btn-aud-presets" disabled>Export Audio</button>
+        <div class="conv-result" id="result-aud-presets"></div>
+      </div>
+
+    </div><!-- /conv-grid -->
+
+    <!-- Audio Studio Footer -->
+    <div id="audioFooter" class="audio-studio-footer" style="display:none; margin-top:60px; margin-bottom: 20px;">
+      <div class="audio-dashboard">
+        <!-- Analytics Panel -->
+        <div class="dash-panel">
+          <h3>Analytics Panel</h3>
+          <div class="dash-grid">
+            <div class="dash-stat"><div class="ds-val" id="ap-orig">--</div><div class="ds-lab">Original Size</div></div>
+            <div class="dash-stat"><div class="ds-val" id="ap-opt" style="color:var(--teal)">--</div><div class="ds-lab">Optimized Size</div></div>
+            <div class="dash-stat"><div class="ds-val" id="ap-ratio" style="color:var(--purple)">--</div><div class="ds-lab">Compression Ratio</div></div>
+            <div class="dash-stat"><div class="ds-val" id="ap-dur">--</div><div class="ds-lab">Files Processed</div></div>
+            <div class="dash-stat"><div class="ds-val" id="ap-speed">--</div><div class="ds-lab">Processing Time</div></div>
+            <div class="dash-stat"><div class="ds-val" id="ap-saved" style="color:var(--gold)">--</div><div class="ds-lab">Storage Saved</div></div>
+          </div>
+        </div>
+        <!-- Trust Section -->
+        <div class="dash-panel trust-panel">
+          <h3>Why Ziphay Audio?</h3>
+          <ul class="trust-list">
+            <li>✓ Browser-First Processing</li>
+            <li>✓ Privacy First Ecosystem</li>
+            <li>✓ No File Uploads</li>
+            <li>✓ No API Keys Required</li>
+            <li>✓ No Third-Party Storage</li>
+            <li>✓ Fast Local Processing</li>
+          </ul>
+        </div>
+        <!-- Future Roadmap -->
+        <div class="dash-panel roadmap-panel" style="grid-column: 1 / -1; display:flex; gap: 48px;">
+          <div style="flex: 1;">
+            <h3>Future Roadmap</h3>
+            <p style="font-size:0.85rem; color:var(--muted); margin-bottom: 16px;">The audio suite is continuously evolving to provide studio-grade tools directly in your browser.</p>
+          </div>
+          <div class="rm-col" style="flex: 1;">
+            <h4>v1.5</h4>
+            <ul>
+              <li>AI Vocal Isolation</li>
+              <li>Karaoke Generator</li>
+              <li>Instrument Separation</li>
+              <li>Audio Mastering</li>
+            </ul>
+          </div>
+          <div class="rm-col" style="flex: 1;">
+            <h4>v2.0</h4>
+            <ul>
+              <li>AI Music Enhancement</li>
+              <li>Studio Quality Restoration</li>
+              <li>AI Remix Tools</li>
+              <li>Professional Audio Suite</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pg-footer" style="padding:48px 24px 28px">
+    <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;text-align:left;margin-bottom:32px">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <div style="width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#00d4aa,#7b3cf6);display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 6h10L4 14h10" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          </div>
+          <strong style="font-family:'Syne',sans-serif;font-size:1.1rem;letter-spacing:-.02em;color:var(--text)">Ziphay</strong>
+          <span style="color:var(--teal)">.</span>
+        </div>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.7;max-width:280px">Convert any file format. 100% browser-based. Zero uploads, zero compromise.</p>
+        <div style="display:flex;gap:8px;margin-top:14px">
+          <a href="#" style="width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.06);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:.9rem;transition:.2s" title="GitHub">🐙</a>
+          <a href="#" style="width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.06);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:.9rem;transition:.2s" title="Twitter / X">𝕏</a>
+          <a href="#" style="width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.06);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:.9rem;transition:.2s" title="Discord">💬</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px">Converters</div>
+        <a href="#" style="display:block;color:var(--muted);text-decoration:none;font-size:.82rem;padding:4px 0;transition:.2s">Image Converter</a>
         <a href="#" style="display:block;color:var(--muted);text-decoration:none;font-size:.82rem;padding:4px 0;transition:.2s">HEIC to JPEG</a>
         <a href="#" style="display:block;color:var(--muted);text-decoration:none;font-size:.82rem;padding:4px 0;transition:.2s">Video to MP4</a>
         <a href="#" style="display:block;color:var(--muted);text-decoration:none;font-size:.82rem;padding:4px 0;transition:.2s">Video to GIF</a>
@@ -883,9 +1078,9 @@
 
   <!-- Scripts -->
   <script src="error-boundary.js"></script>
-  <script src="converter-engine.js"></script>
-  <script src="audio-engine.js"></script>
-  <script src="converter-page.js"></script>
+  <script type="module" src="converter-engine.js"></script>
+  <script type="module" src="audio-engine.js"></script>
+  <script type="module" src="converter-page.js"></script>
   <!-- Vercel Speed Insights -->
   <script>
     window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };

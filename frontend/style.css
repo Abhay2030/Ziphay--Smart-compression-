@@ -5,13 +5,13 @@
 
 /* ─── DARK THEME (default) ─── */
 [data-theme="dark"] {
-    --bg:      #030303;
-    --bg2:     #0a0a0a;
-    --bg3:     #121212;
-    --bg4:     #1c1c1c;
+    --bg:      #050508;
+    --bg2:     #0c0c11;
+    --bg3:     #14141d;
+    --bg4:     #1d1d28;
     --text:    #ffffff;
     --text2:   #a1a1aa;
-    --muted:   #71717a;
+    --muted:   #737380;
     --border:  rgba(255,255,255,0.06);
     --border2: rgba(255,255,255,0.1);
     --glass:   rgba(255,255,255,0.03);
@@ -49,15 +49,15 @@
 
 /* ─── ALWAYS-ON VARS ─── */
 :root {
-    --teal:    #14b8a6;
-    --teal2:   #0d9488;
-    --teal-d:  rgba(20,184,166,0.12);
-    --teal-g:  rgba(20,184,166,0.5);
-    --purple:  #8b5cf6;
-    --purple-d:rgba(139,92,246,0.12);
-    --gold:    #fbbf24;
-    --gold-d:  rgba(251,191,36,0.12);
-    --red:     #f87171;
+    --teal:    #00e6ba;
+    --teal2:   #00cc99;
+    --teal-d:  rgba(0,230,186,0.12);
+    --teal-g:  rgba(0,230,186,0.4);
+    --purple:  #9d70ff;
+    --purple-d:rgba(157,112,255,0.15);
+    --gold:    #fcd34d;
+    --gold-d:  rgba(252,211,77,0.12);
+    --red:     #fb7185;
     --r:       14px;
     --r2:      20px;
     --r3:      28px;
@@ -715,18 +715,42 @@ nav {
     color: var(--purple);
 }
 
-/* ─── DROP ZONE ─── */
 .drop-zone {
     border: 2px dashed rgba(128, 128, 200, .2);
     border-radius: 16px;
     padding: 36px 24px;
     text-align: center;
     cursor: pointer;
-    transition: .3s;
+    transition: all .4s cubic-bezier(0.16, 1, 0.3, 1);
     background: var(--input-bg);
     margin-bottom: 14px;
     outline: none;
     user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.drop-zone::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    background: radial-gradient(circle, rgba(0,212,170,0.1) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: width .5s, height .5s;
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.drop-zone:hover::before,
+.drop-zone.dragover::before {
+    width: 200%; height: 200%;
+}
+
+.drop-zone > * {
+    position: relative;
+    z-index: 1;
 }
 
 .drop-zone:hover,
@@ -734,11 +758,13 @@ nav {
 .drop-zone.dragover {
     border-color: var(--teal);
     background: rgba(0, 212, 170, .04);
-    box-shadow: 0 0 24px rgba(0, 212, 170, .08) inset;
+    box-shadow: 0 0 32px rgba(0, 212, 170, .1) inset, 0 8px 32px rgba(0,212,170,.05);
+    transform: translateY(-2px);
 }
 
 .drop-zone.dragover {
     border-style: solid;
+    transform: scale(1.02);
 }
 
 .drop-icon {
@@ -1703,6 +1729,7 @@ section {
     user-select: none;
     overflow: hidden;
     background: #000;
+    touch-action: pan-y;
 }
 
 .cmp-img {
@@ -2104,6 +2131,11 @@ footer {
 
     .compare-wrap {
         height: 240px;
+    }
+    
+    .cmp-handle {
+        width: 48px;
+        height: 48px;
     }
 }
 

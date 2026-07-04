@@ -26,6 +26,37 @@ const AVIF_SUPPORTED = (() => {
     } catch(e) { return false; }
 })();
 
+/* ─────────────────────────────────────
+   WEB WORKER INITIALIZATION
+───────────────────────────────────── */
+let ziphayWorker = null;
+let workerMsgId = 0;
+const pendingResolvers = new Map();
+
+try {
+    ziphayWorker = new Worker('worker.js');
+    ziphayWorker.onmessage = (e) => {
+        const { id, status, result, error } = e.data;
+        if (pendingResolvers.has(id)) {
+            const { resolve, reject } = pendingResolvers.get(id);
+            if (status === 'success') resolve(result);
+            else reject(new Error(error));
+            pendingResolvers.delete(id);
+        }
+    };
+} catch (e) {
+    console.warn('[Ziphay] Web Worker could not be loaded, processing will remain on main thread.', e);
+}
+
+function runInWorker(action, payload) {
+    return new Promise((resolve, reject) => {
+        if (!ziphayWorker) return reject(new Error('Worker not available'));
+        const id = workerMsgId++;
+        pendingResolvers.set(id, { resolve, reject });
+        ziphayWorker.postMessage({ id, action, payload });
+    });
+}
+
 const GOAL_PROFILES = {
     web: {
         label: 'Web Optimisation', tag: '1920px · WebP', dot: '#60a5fa',
@@ -153,6 +184,7 @@ function switchMode(mode) {
     if (selectedFiles.length) updatePreviews();
     resetDropZoneStyle();
 }
+window.switchMode = switchMode;
 
 /* ─────────────────────────────────────
    GOAL SELECTOR
@@ -342,6 +374,7 @@ function openTool(accept, mode) {
     setTimeout(() => fileInput.click(), 50);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+window.openTool = openTool;
 
 /* ─────────────────────────────────────
    ADD FILES
@@ -655,10 +688,73 @@ async function runBgRemove() {
 async function compressFile(file, level, profile, fmt, overrideQuality) {
     const type = file.type.toLowerCase();
     if (IMAGE_TYPES.includes(type)) return compressImage(file, level, profile, fmt, overrideQuality);
+    if (type === 'application/pdf') return compressPDF(file, level, profile);
     return compressGzip(file, level);
 }
 
-function compressImage(file, level, profile, fmt, overrideQuality) {
+async function compressPDF(file, level, profile) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('goal', 'web'); // Ziphay backend expects a goal
+            formData.append('quality', level);
+            
+            const reqId = Math.random().toString(36).substring(2, 10);
+            
+            // POST to the newly migrated Vercel Serverless Backend
+            const res = await fetch('/api/v1/compress', {
+                method: 'POST',
+                body: formData,
+                headers: { 'X-Request-ID': reqId }
+            });
+            
+            if (!res.ok) {
+                const errData = await res.json().catch(() => ({}));
+                throw new Error(errData.detail || 'Server compression failed');
+            }
+            const data = await res.json();
+            
+            // Fetch the compressed file blob from the returned URL
+            const dlRes = await fetch(data.download_url);
+            if (!dlRes.ok) throw new Error('Failed to download compressed PDF');
+            
+            const blob = await dlRes.blob();
+            resolve({ blob, filename: `ziphay_opt_${file.name}` });
+        } catch(err) {
+            console.error('[Ziphay] Backend PDF Compression Error:', err);
+            reject(new Error('PDF Server Compression Failed: ' + err.message));
+        }
+    });
+}
+
+async function compressImage(file, level, profile, fmt, overrideQuality) {
+    const quality = overrideQuality !== undefined ? overrideQuality : ((profile.quality && profile.quality[level]) ?? .65);
+    const maxDim = profile.maxDim ?? 1920;
+    const mimeMap = { auto: 'image/webp', webp: 'image/webp', jpeg: 'image/jpeg', png: 'image/png' };
+    const extMap  = { auto: '.webp',      webp: '.webp',      jpeg: '.jpg',       png: '.png'       };
+    
+    if (AVIF_SUPPORTED) {
+        mimeMap.avif = 'image/avif';
+        extMap.avif  = '.avif';
+        if (fmt === 'auto') { mimeMap.auto = 'image/avif'; extMap.auto = '.avif'; }
+    }
+    
+    const mime = mimeMap[fmt] || 'image/webp';
+    const ext = extMap[fmt] || '.webp';
+    const q = mime === 'image/png' ? undefined : quality;
+    const levelTag = level === 'low' ? 'hq' : level === 'high' ? 'min' : 'opt';
+
+    try {
+        const result = await runInWorker('compressImage', { file, maxDim, mime, q });
+        return { blob: result.blob, filename: `ziphay_${stripExt(file.name)}_${levelTag}_${result.width}x${result.height}${ext}` };
+    } catch (err) {
+        console.warn('[Ziphay] Worker failed, falling back to main thread.', err);
+        return compressImageFallback(file, level, profile, fmt, overrideQuality);
+    }
+}
+
+function compressImageFallback(file, level, profile, fmt, overrideQuality) {
     return new Promise((resolve, reject) => {
         const quality = overrideQuality !== undefined ? overrideQuality : ((profile.quality && profile.quality[level]) ?? .65);
         const maxDim = profile.maxDim ?? 1920;
@@ -725,7 +821,21 @@ function compressGzip(file, level) {
    2-pass for large scales (2× then 2×)
    to get better quality than 1-pass 4×.
 ───────────────────────────────────── */
-function upscaleImage(file, scale, enhance) {
+async function upscaleImage(file, scale, enhance) {
+    try {
+        const result = await runInWorker('upscaleImage', { file, scale, enhance });
+        return {
+            blob: result.blob,
+            filename: `ziphay_${stripExt(file.name)}_${scale}x.png`,
+            dims: { w: result.width, h: result.height }
+        };
+    } catch (err) {
+        console.warn('[Ziphay] Worker failed, falling back to main thread.', err);
+        return upscaleImageFallback(file, scale, enhance);
+    }
+}
+
+function upscaleImageFallback(file, scale, enhance) {
     return new Promise((resolve, reject) => {
         const url = URL.createObjectURL(file);
         const img = new Image();
@@ -1263,7 +1373,21 @@ function mimeLabel(m) {
    2) Apply CSS filter blur (noise removal)
    3) Apply unsharp mask pass for edge recovery
 ───────────────────────────────────── */
-function denoiseImage(file, strength, dnMode) {
+async function denoiseImage(file, strength, dnMode) {
+    try {
+        const result = await runInWorker('denoiseImage', { file, strength, dnMode });
+        return {
+            blob: result.blob,
+            filename: `ziphay_${stripExt(file.name)}_denoised.png`,
+            dims: { w: result.width, h: result.height }
+        };
+    } catch (err) {
+        console.warn('[Ziphay] Worker failed, falling back to main thread.', err);
+        return denoiseImageFallback(file, strength, dnMode);
+    }
+}
+
+function denoiseImageFallback(file, strength, dnMode) {
     return new Promise((resolve, reject) => {
         const url = URL.createObjectURL(file);
         const img = new Image();
