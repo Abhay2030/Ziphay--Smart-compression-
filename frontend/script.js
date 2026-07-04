@@ -12,6 +12,11 @@
 ══════════════════════════════════════════════ */
 
 /* ─────────────────────────────────────
+   IMPORTS
+───────────────────────────────────── */
+import imglyRemoveBackground from 'https://unpkg.com/@imgly/background-removal@1.4.5/dist/index.mjs';
+
+/* ─────────────────────────────────────
    CONSTANTS
 ───────────────────────────────────── */
 const IMAGE_TYPES = [
