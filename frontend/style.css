@@ -4590,4 +4590,13 @@ html {
     .sdk-benefits-grid {
         grid-template-columns: 1fr;
     }
+
+/* Fix for GRID Community Logo to display as perfect square */
+.community-logo img, .partner-logo img {
+    border-radius: 4px !important;
+    object-fit: contain !important;
+    background: transparent !important;
 }
+.community-logo, .partner-logo {
+    border-radius: 4px !important;
+}}
