@@ -14,7 +14,7 @@
 /* ─────────────────────────────────────
    IMPORTS
 ───────────────────────────────────── */
-import imglyRemoveBackground from 'https://unpkg.com/@imgly/background-removal@1.4.5/dist/index.mjs';
+import imglyRemoveBackground from 'https://esm.run/@imgly/background-removal@1.4.5';
 
 /* ─────────────────────────────────────
    CONSTANTS
