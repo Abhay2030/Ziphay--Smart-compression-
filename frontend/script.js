@@ -14,7 +14,7 @@
 /* ─────────────────────────────────────
    IMPORTS
 ───────────────────────────────────── */
-import imglyRemoveBackground from 'https://esm.run/@imgly/background-removal@1.4.5';
+import imglyRemoveBackground from 'https://esm.sh/@imgly/background-removal@1.4.5';
 
 /* ─────────────────────────────────────
    CONSTANTS
