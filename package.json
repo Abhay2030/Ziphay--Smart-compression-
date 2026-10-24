@@ -24,10 +24,20 @@
     ],
     "win": {
       "target": [
-        "portable"
+        "nsis"
       ],
       "icon": "frontend/icon.ico",
       "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Ziphay AI",
+      "uninstallDisplayName": "Ziphay AI",
+      "deleteAppDataOnUninstall": false
     }
   },
   "dependencies": {
