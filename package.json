@@ -30,7 +30,6 @@
         "nsis"
       ],
       "icon": "frontend/icon.ico",
-      "publisherName": "Abhay Sachin Donde",
       "legalTrademarks": "Ziphay AI™ by Abhay Sachin Donde",
       "artifactName": "${productName}-Setup-${version}.${ext}"
     },
