@@ -1,0 +1,76 @@
+================================================================================
+                    ZIPHAY AI — SOFTWARE LICENSE & TERMS AGREEMENT
+================================================================================
+
+Application Name   : Ziphay AI — Smart File Compression & Image Upscaling
+Version            : 1.0.0 (Windows 64-bit Edition)
+Publisher / Author : Abhay Sachin Donde
+Copyright          : © 2026 Abhay Sachin Donde. All rights reserved.
+Official Website   : https://ziphay-smart-compression.vercel.app
+Community Partner  : GRID Community (Founded by Krishna Raj Barnwal)
+
+PLEASE READ THIS ENTIRE AGREEMENT CAREFULLY BEFORE PROCEEDING WITH INSTALLATION.
+BY CLICKING "I AGREE", YOU ACCEPT AND AGREE TO BE BOUND BY THE TERMS SET FORTH BELOW.
+IF YOU DO NOT AGREE TO THESE TERMS, CLICK "CANCEL" TO EXIT THE INSTALLER WITHOUT
+MAKING ANY CHANGES TO YOUR SYSTEM.
+
+--------------------------------------------------------------------------------
+1. END USER LICENSE AGREEMENT (EULA)
+--------------------------------------------------------------------------------
+Publisher grants you a personal, non-exclusive, non-transferable, revocable license
+to install, execute, and use Ziphay AI on your Windows device solely for your personal,
+educational, or commercial media processing needs, subject to the conditions herein.
+
+You agree not to:
+(a) Reverse engineer, decompile, or disassemble any proprietary native modules of the Software;
+(b) Distribute modified versions of the installer claiming endorsement by the Publisher;
+(c) Rent, lease, or sublicense the Software without explicit written permission from the Publisher.
+
+--------------------------------------------------------------------------------
+2. REQUIRED PERMISSIONS & INSTALLATION OPTIONS
+--------------------------------------------------------------------------------
+Ziphay AI is designed to run with minimal, non-invasive system privileges:
+• User-Level Installation: Installs directly to your user profile directory
+  (%LOCALAPPDATA%\Programs\Ziphay AI). Administrator rights are NOT required.
+• Windows File Explorer Context Menu: Optionally registers cascading menu items
+  under the Current User registry (HKCU\Software\Classes) for image and media files.
+  No system-wide machine keys (HKLM) are modified without user intent.
+• Disk Read/Write: The application only accesses files explicitly opened, dragged,
+  or selected through the Windows File Explorer context menu.
+• No Background Telemetry / Zero Daemons: Ziphay AI does not install persistent
+  background services, monitoring daemons, or autostart hooks.
+
+--------------------------------------------------------------------------------
+3. PRIVACY POLICY & ON-DEVICE PROCESSING GUARANTEE
+--------------------------------------------------------------------------------
+Ziphay AI adheres strictly to the "Browser-First and Desktop Zero-Storage Principle":
+• 100% Local Processing: All image compression, resizing, format conversion,
+  denoising, and AI upscaling operations execute entirely on your local computer's
+  CPU, GPU, and memory.
+• Zero Cloud Uploads: Media files selected for processing are never uploaded,
+  transferred, copied, or stored on remote cloud servers.
+• Safe Non-Destructive Saving: Your original media files are never overwritten
+  by default; output files are saved safely with an identifying suffix (e.g., _ziphay).
+
+--------------------------------------------------------------------------------
+4. TERMS OF USE & DISCLAIMER OF WARRANTIES
+--------------------------------------------------------------------------------
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+
+IN NO EVENT SHALL THE PUBLISHER (ABHAY SACHIN DONDE) BE LIABLE FOR ANY CLAIM, DAMAGES,
+LOSS OF DATA, OR OTHER LIABILITY ARISING FROM, OUT OF, OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+--------------------------------------------------------------------------------
+5. UNINSTALLATION & CLEAN SYSTEM RESTORATION
+--------------------------------------------------------------------------------
+You may uninstall Ziphay AI at any time through Windows Settings > Apps > Installed apps
+or via the uninstaller located in the application directory. Uninstallation cleanly
+removes all application files, shortcuts, and all Ziphay-specific Windows File Explorer
+context-menu registry entries.
+
+================================================================================
+Publisher: Abhay Sachin Donde | Official: https://ziphay-smart-compression.vercel.app
+================================================================================

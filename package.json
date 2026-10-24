@@ -37,10 +37,13 @@
       "oneClick": false,
       "perMachine": false,
       "allowToChangeInstallationDirectory": true,
+      "license": "desktop/LICENSE.txt",
+      "include": "desktop/installer.nsh",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "Ziphay AI",
       "uninstallDisplayName": "Ziphay AI",
+      "runAfterFinish": true,
       "deleteAppDataOnUninstall": false
     }
   },
