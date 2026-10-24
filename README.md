@@ -1,4 +1,11 @@
-# 🚀 Ziphay AI
+# 🚀 Ziphay AI — Smart Compression, Optimization & Image Enhancement
+
+[![Live Website](https://img.shields.io/badge/Live_Website-ziphay--smart--compression.vercel.app-00d4aa?style=for-the-badge&logo=vercel)](https://ziphay-smart-compression.vercel.app)
+[![Founder](https://img.shields.io/badge/Founder-Abhay%20Sachin%20Donde-8b5cf6?style=for-the-badge)](https://ziphay-smart-compression.vercel.app/about.html)
+[![Sitemap](https://img.shields.io/badge/Sitemap-Indexed-success?style=for-the-badge)](https://ziphay-smart-compression.vercel.app/sitemap.xml)
+
+> 🌐 **Live Web Studio:** [https://ziphay-smart-compression.vercel.app](https://ziphay-smart-compression.vercel.app)  
+> 🔒 **Zero-Server Upload Privacy** • ⚡ **Client-Side WebAssembly** • 🎨 **Created by Abhay Sachin Donde**
 
 ### Compress Smarter. Enhance Better. Create Faster.
 
