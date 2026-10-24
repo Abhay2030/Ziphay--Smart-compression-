@@ -2,6 +2,8 @@
   "name": "ziphay-ai",
   "version": "1.0.0",
   "private": true,
+  "author": "Abhay Sachin Donde",
+  "description": "Ziphay AI — Smart File Compression, Image Upscaling & Optimization for Windows",
   "main": "desktop/main.js",
   "scripts": {
     "dev": "vite",
@@ -15,6 +17,7 @@
   "build": {
     "appId": "com.ziphay.ai.desktop",
     "productName": "Ziphay AI",
+    "copyright": "Copyright © 2026 Abhay Sachin Donde",
     "directories": {
       "output": "dist-desktop"
     },
@@ -27,6 +30,8 @@
         "nsis"
       ],
       "icon": "frontend/icon.ico",
+      "publisherName": "Abhay Sachin Donde",
+      "legalTrademarks": "Ziphay AI™ by Abhay Sachin Donde",
       "artifactName": "${productName}-Setup-${version}.${ext}"
     },
     "nsis": {
