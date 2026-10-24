@@ -1,0 +1,14 @@
+# ==============================================================================
+# Ziphay AI — Robots Configuration
+# Official Website: https://ziphay-smart-compression.vercel.app
+# Founder & Developer: Abhay Sachin Donde
+# ==============================================================================
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /dashboard.html
+Disallow: /404.html
+
+# Sitemap location
+Sitemap: https://ziphay-smart-compression.vercel.app/sitemap.xml
