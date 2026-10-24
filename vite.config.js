@@ -3,6 +3,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   root: 'frontend',
+  publicDir: 'public',
   build: {
     outDir: '../dist',
     emptyOutDir: true,
@@ -19,7 +20,9 @@ export default defineConfig({
         terms: resolve(__dirname, 'frontend/terms.html'),
         security: resolve(__dirname, 'frontend/security.html'),
         status: resolve(__dirname, 'frontend/status.html'),
-        cookies: resolve(__dirname, 'frontend/cookies.html')
+        cookies: resolve(__dirname, 'frontend/cookies.html'),
+        changelog: resolve(__dirname, 'frontend/changelog.html'),
+        notFound: resolve(__dirname, 'frontend/404.html')
       }
     }
   }
